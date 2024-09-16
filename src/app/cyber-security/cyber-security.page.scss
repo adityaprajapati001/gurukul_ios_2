@@ -1,0 +1,280 @@
+.card {
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  margin: 0;
+}
+.card_main {
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px;
+}
+
+.img-fluid{
+  overflow: hidden;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card_sub {
+  padding-left: 10px;
+}
+.card_title {
+  margin-top: 0;
+  font-family: "Inter", sans-serif;
+  // color: #000;
+  font-size: 20px;
+  font-weight: 500;
+}
+.progress_bar_container {
+  background-color: rgba(49, 152, 96, 0.28);
+  height: 10px;
+  border-radius: 5px;
+}
+.segment {
+  border-bottom: 1px solid #dadada;
+}
+.progress_bar {
+  height: 100%;
+  background-color: rgba(49, 152, 96, 1);
+  border-radius: 5px;
+}
+
+.percentage_display {
+  // color: #464646;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-end;
+}
+.card_body_sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bar_main {
+  display: flex;
+  align-items: center;
+}
+.segment_title {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.body_main {
+  padding: 12px;
+}
+.body_title {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 500;
+}
+// .body_sub {
+//   position: absolute;
+//   bottom: 0;
+//   padding: 12px;
+// }
+ion-fab[slot="fixed"] {
+  position: fixed !important;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10; /* Ensure it is above other elements */
+}
+.btn_pwd {
+  width: 100%;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  --border-radius: 4px;
+}
+.btn_btm {
+  width: 100%;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  --border-radius: 4px;
+}
+.content_p {
+  margin: 0;
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.card_badge {
+  border-radius: 20px;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.pop_head {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+}
+.pop_body {
+  color: #319860;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.card_search {
+  border-radius: 5px;
+  border: 1px solid #d7d7d7;
+}
+.grade_search {
+  color: #7b7b7b;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+}
+.comp_p {
+  color: #565656;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+.content_h2 {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+.comm {
+  color: #565656;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.label_left {
+  color: #565656;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.label_ryt {
+  color: #3553a1;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.search_icon {
+  font-size: 18px;
+}
+.grade_header {
+  background: #3553a1;
+}
+.grade_title {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.acc_label {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.acc_sub_label {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.acc_label_total {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.acc_sub_label_total {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.row_head {
+  color: #464646;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.row_val {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.acc_total {
+  --background: #319860;
+}
+.acc_total.ion-accordion-toggle-icon{
+  color: #fff;
+    margin: 0;
+}
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 576px) {
+  .card_title {
+    font-size: 18px;
+  }
+
+  .body_title {
+    font-size: 18px;
+  }
+
+  .percentage_display {
+    font-size: 14px;
+  }
+
+  .body_main,
+  .body_sub {
+    padding: 8px;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .card_title {
+    font-size: 19px;
+  }
+
+  .body_title {
+    font-size: 19px;
+  }
+
+  .percentage_display {
+    font-size: 14px;
+  }
+
+  .body_main,
+  .body_sub {
+    padding: 10px;
+  }
+}
+
+ion-content {
+  padding: 5%!important;
+}

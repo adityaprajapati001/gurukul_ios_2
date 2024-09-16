@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start" color="primary" defaultHref=""></ion-back-button>
+    <ion-title class="pref_title">Preferences</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="d-flex align-items-center justify-content-between ion-padding">
+    <div class="d-flex align-items-center">
+      <ion-img class="setting_icon p-1" src="assets/icon/chat.svg"></ion-img>
+      <p class="pref_p m-2">Message</p>
+    </div>
+    <ion-icon (click)="onMessage()"
+      slot="end"
+      color="primary"
+      size="large"
+      name="chevron-forward-sharp"
+    ></ion-icon>
+  </div>
+  <div class="d-flex align-items-center justify-content-between ion-padding pt-0">
+    <div class="d-flex align-items-center">
+      <ion-img class="setting_icon p-1" src="assets/icon/bell.svg"></ion-img>
+      <p class="pref_p m-1">Notification</p>
+    </div>
+    <ion-icon (click)="onNotification()"
+      slot="end"
+      color="primary"
+      size="large"
+      name="chevron-forward-sharp"
+    ></ion-icon>
+  </div>
+</ion-content>

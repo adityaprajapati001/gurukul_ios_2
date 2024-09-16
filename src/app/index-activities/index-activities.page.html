@@ -1,0 +1,227 @@
+<ion-menu side="end" contentId="main-content" menuId="endMenu">
+  <ion-header class="menu_header">
+    <ion-toolbar>
+      <ion-icon (click)="onClose()" class="p-1" slot="end" size="large" name="close-sharp"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div class="d-flex align-items-start p-2">
+      <ion-img src="assets/img/document.png" alt=""></ion-img>
+      <div class="ms-1">
+        <span class="main_span">Page</span>
+        <div class="d-flex align-items-start">
+          <p class="menu_content m-0 p-0">
+            Click here for <strong>Spot the Phish</strong> Content
+          </p>
+          <ion-img src="assets/img/share.png" alt=""></ion-img>
+        </div>
+      </div>
+    </div>
+    <hr class="menu_hr m-1" />
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="m-2">
+        <div class="d-flex align-items-center mb-1">
+          <ion-img src="assets/icon/mortarboard_grey.svg" alt=""></ion-img>
+          <span class="course_span ms-1">Course</span>
+        </div>
+        <ion-text>Cyber Security Awareness</ion-text>
+      </div>
+      <ion-icon class="p-1" color="primary" name="chevron-forward-sharp"></ion-icon>
+    </div>
+    <hr class="menu_hr m-1" />
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center m-2">
+        <ion-img src="assets/icon/blog.svg" alt=""></ion-img>
+        <span class="course_span ms-1">Blog</span>
+      </div>
+      <ion-icon color="primary" class="p-1" name="chevron-forward-sharp"></ion-icon>
+    </div>
+    <hr class="menu_hr m-1" />
+  </ion-content>
+  <ion-footer class="menu_footer">
+    <ion-button size="block" style="--border-radius: 5px;"><ion-icon color="light" name="refresh-sharp"></ion-icon><span
+        class="ref_btn text-capitalize">Refresh</span></ion-button>
+  </ion-footer>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-back-button color="primary" (click)="onBack()" slot="start" defaultHref=""></ion-back-button>
+      <!-- <ion-img class="p-2" slot="end" src="assets/icon/info.svg" alt="" (click)="onIndex()"></ion-img> -->
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <div class="main h-100">
+      <div class="p-3 d-flex align-items-center">
+        <ion-img src="assets/img/document.png" alt=""></ion-img>
+        <p class="content_p ms-2" [innerHTML]="data.name">
+
+        </p>
+      </div>
+      <div class="content_main" *ngIf="showPrevious">
+        <div class="col-12">
+          <div class="content_head mb-3">
+            <ion-badge color="primary" class="col-2 card_badge">To Do&nbsp;<ion-icon
+                name="caret-down-sharp"></ion-icon></ion-badge>
+          </div>
+        </div>
+        <div class="col-12 p-3">
+          <!-- <div class="h-100" *ngIf="showUsedVehical">
+              <ng-container *ngIf="!data.contents[0]?.isHtmlFile && !data.contents[0]?.sanitizedVideoUrl && isHaveImage">
+                <ion-img-viewer imageViewer [src]="extractImageUrl(data.contents[0].fileurl) + '?token=' + utility.getToken()"
+                  alt=""></ion-img-viewer>
+                <br />
+              </ng-container>
+              <ng-container id="iframContainer" *ngIf="data.contents[0]?.isHtmlFile && !isHaveImage">
+                <iframe id="contentFrame" (load)="handleIframeLoad($event)" #iframe [src]="data.contents[0].htmlFileUrl"></iframe>
+                <br><br>
+              </ng-container>
+
+              <ng-container *ngIf="data.contents[0]?.sanitizedVideoUrl">
+                <video controls width="100%">
+                  <source [src]="data.contents[0].sanitizedVideoUrl" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </ng-container>
+          </div> -->
+
+          <!-- <div class="h-100" *ngIf="showUsedVehical1">
+              <ng-container *ngIf="!data.contents[1]?.isHtmlFile && !data.contents[1]?.sanitizedVideoUrl && isHaveImage">
+                <ion-img-viewer imageViewer [src]="extractImageUrl(data.contents[1].fileurl) + '?token=' + utility.getToken()"
+                  alt=""></ion-img-viewer>
+                <br />
+              </ng-container>
+              <ng-container id="iframContainer" *ngIf="data.contents[1]?.isHtmlFile && !isHaveImage">
+                <iframe id="contentFrame" (load)="handleIframeLoad($event)" #iframe [src]="data.contents[1].htmlFileUrl"></iframe>
+                
+                <br><br>
+              </ng-container>
+
+              <ng-container *ngIf="data.contents[1]?.sanitizedVideoUrl">
+                <video controls width="100%">
+                  <source [src]="data.contents[1]?.sanitizedVideoUrl" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </ng-container>
+          </div>
+
+
+          <div class="h-100" *ngIf="showUsedVehical2">
+              <ng-container *ngIf="!data.contents[2]?.isHtmlFile && !data.contents[2]?.sanitizedVideoUrl && isHaveImage">
+                <ion-img-viewer imageViewer [src]="extractImageUrl(data.contents[2]?.fileurl) + '?token=' + utility.getToken()"
+                  alt=""></ion-img-viewer>
+                <br />
+              </ng-container>
+              <ng-container id="iframContainer" *ngIf="data.contents[2]?.isHtmlFile && !isHaveImage">
+                <iframe id="contentFrame" (load)="handleIframeLoad($event)" #iframe [src]="data.contents[2]?.htmlFileUrl"></iframe>
+                <br><br>
+              </ng-container>
+
+              <ng-container *ngIf="data.contents[2]?.sanitizedVideoUrl">
+                <video controls width="100%">
+                  <source [src]="data.contents[2]?.sanitizedVideoUrl" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </ng-container>
+          </div> -->
+        </div>
+      </div>
+      <div class="content_main" *ngIf="showNext">
+        <div class="col-12">
+          <div class="content_head mb-3">
+            <ion-badge color="success" class="col-2 card_badge">Done&nbsp;<ion-icon name="caret-down-sharp"
+                (click)="presentPopover($event)"></ion-icon></ion-badge>
+            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+              <ng-template>
+                <ion-content>
+                  <ion-list class="p-0">
+                    <ion-item lines="none">
+                      <div>
+                        <h1 class="pop_head m-0 p-0">You Must</h1>
+                        <p class="pop_body m-0 p-0">Received a Grade</p>
+                      </div>
+                    </ion-item>
+                  </ion-list>
+                </ion-content>
+              </ng-template>
+            </ion-popover>
+          </div>
+        </div>
+        <div class="col-12 p-3">
+          <div class="box_next h-100">
+            <div class="content_next p-2">
+              <p class="body_next p-0 m-0">Grading Method</p>
+              <p class="attempt p-0 m-0">Last Attempt</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer [translucent]="true">
+    <ion-toolbar class="p-1">
+      
+      <div class="col-12 body_sub" *ngIf="showUsedVehical && data.contents.length>1">
+        <div>
+          <div class="row" *ngIf="showUsedVehical && data.contents.length>0">
+            <div class="col-6">
+            </div>
+            <div class="col-6">
+              <ion-button expand="block" class="btn_pwd" color="primary" (click)="showUsedVehicalCheckCondition()">Next&nbsp;<ion-img src="assets/icon/ryt_arrow.svg" alt=""></ion-img></ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 body_sub" *ngIf="showUsedVehical1 && data.contents.length>2">
+          <div class="row" *ngIf="showUsedVehical1">
+            <div class="col-6">
+              <ion-button  expand="block" class="btn_btm" color="primary" (click)="showUsedVehicalprreviouesCheckCondition1()"><ion-img
+                  src="assets/icon/lft_arrow.svg" alt=""></ion-img>&nbsp;Previous</ion-button>
+            </div>
+            <div class="col-6">
+              <ion-button expand="block" class="btn_pwd" color="primary" (click)="showUsedVehicalCheckCondition1()">Next&nbsp;<ion-img src="assets/icon/ryt_arrow.svg" alt=""></ion-img></ion-button>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="col-12 body_sub" *ngIf="showUsedVehical2">
+        <div>
+          <div class="row" *ngIf="showUsedVehical2">
+            <div class="col-6">
+              <ion-button  expand="block" class="btn_btm" color="primary" (click)="showUsedVehicalprreviouesCheckCondition2()"><ion-img
+                  src="assets/icon/lft_arrow.svg" alt=""></ion-img>&nbsp;Previous</ion-button>
+            </div>
+            <div class="col-6">
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+  <!-- <ion-footer [translucent]="true">
+    <ion-toolbar>
+      <div class="col-12 d-flex align-items-center justify-content-between">
+        <div>
+          <ion-button class="act_btn" (click)="onPrevious()"><ion-icon color="primary" slot="start" size="small"
+              name="chevron-back-sharp"></ion-icon>Previous Activity</ion-button>
+        </div>
+        <div>
+          <ion-button class="act_btn" (click)="onNext()">Next Activity<ion-icon size="small" slot="end" color="primary"
+              name="chevron-forward-sharp"></ion-icon></ion-button>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer> -->
+</div>
+<!-- <ion-list *ngFor="let item of data.contents">
+  <iframe id="contentFrame" (load)="handleIframeLoad($event)" #iframe [src]="data.contents[1].htmlFileUrl"></iframe>
+
+  <iframe id="contentFrame" #iframe [src]="item.htmlFileUrl"></iframe>
+</ion-list> -->
+
+

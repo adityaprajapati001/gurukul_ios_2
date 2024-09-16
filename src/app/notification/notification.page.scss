@@ -1,0 +1,231 @@
+.title {
+  margin: 0;
+  padding: 0;
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.main_p {
+  // color: #565656;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.main {
+  margin-top: 50%;
+}
+
+.image {
+  display: inline-block;
+  width: 40%;
+  height: 40%;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 576px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .main_p {
+    font-size: 20px;
+  }
+
+  .main {
+    margin-top: 30%;
+  }
+
+  .image {
+    width: 40%;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .main_p {
+    font-size: 22px;
+  }
+
+  .main {
+    margin-top: 40%;
+  }
+
+  .image {
+    width: 40%;
+  }
+}
+ion-avatar {
+  --border-radius: 4px;
+}
+
+
+
+
+
+
+
+/* Default styles */
+
+.header {
+  margin: 0;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.profile_img {
+  border-radius: 50% !important;
+  overflow: hidden;
+  object-fit: cover;
+  height: auto;
+  width: 40px;
+}
+
+/* Profile menu css start */
+
+.profile_heading {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.profile_title {
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.profile_link {
+  color: #3553a1;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.profile_hr {
+  border: 1px solid #dadada;
+  background: #dadada;
+  margin: 0;
+}
+
+.profile_name {
+  // color: #000;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.profile_gardes {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.setting_icon {
+  font-size: 25px;
+}
+
+.logout_btn {
+  border-radius: 5px;
+}
+
+.logout_span {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+/* Profile menu css end */
+
+/* Media Queries for responsiveness */
+
+@media only screen and (max-width: 767px) {
+  .header {
+      font-size: 14px;
+  }
+
+  .anim_p {
+      font-size: 12px;
+  }
+
+  .anim_text {
+      font-size: 10px;
+  }
+
+  .card_title {
+      font-size: 16px;
+  }
+
+  .card_text {
+      font-size: 10px;
+  }
+
+  .percentage_display {
+      font-size: 8px;
+  }
+
+  .container p {
+      font-size: 14px;
+  }
+
+  .btn_ok,
+  .btn_cancel {
+      font-size: 14px;
+  }
+
+  .sub {
+      font-size: 14px;
+  }
+
+  .header_sub {
+      font-size: 12px;
+  }
+
+  .menu_heading {
+      font-size: 14px;
+  }
+
+  .menu_body {
+      font-size: 13px;
+  }
+
+  .content_p {
+      font-size: 12px;
+  }
+
+  .profile_heading {
+      font-size: 18px;
+  }
+
+  .profile_title {
+      font-size: 18px;
+  }
+
+  .profile_link {
+      font-size: 15px;
+  }
+
+  .profile_name {
+      font-size: 16px;
+  }
+
+  .profile_gardes {
+      font-size: 16px;
+  }
+
+  .logout_span {
+      font-size: 14px;
+  }
+}

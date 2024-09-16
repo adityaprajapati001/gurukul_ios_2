@@ -1,0 +1,95 @@
+<!-- <app-header [profileImg]="userImg"></app-header> -->
+<!-- Profile Menu Start -->
+<ion-menu side="end" contentId="main-content" menuId="menuProfil">
+  <ion-header>
+    <ion-toolbar>
+      <ion-item lines="none">
+      <ion-label slot="start" class="profile_heading">User Account</ion-label>
+      <ion-icon class="p-1" slot="end" size="large" name="close-sharp" (click)="onClose()"></ion-icon>
+    </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div class="col-12 text-center ion-padding">
+      <h1 class="profle_title">GURUKUL</h1>
+      <!-- <div class="d-flex justify-content-center mb-3">
+        <a (click)="openCapacitorSite()" class="profile_link">https://uat-gurukul.skfin.in</a>
+      </div> -->
+    </div>
+    <hr class="profile_hr" />
+    <ng-container *ngIf="userData">
+      <div class="d-flex align-items-center justify-content-between ion-padding" *ngFor="let item of userData; let i = index">
+        <div class="d-flex align-items-center">
+          <ion-img [src]="item.profileimageurl" class="img-fluid rounded-start profile_img" alt=""></ion-img>
+          <p class="profile_name m-1">{{item.fullname}}</p>
+        </div>
+      </div>
+    </ng-container>
+    <!-- <hr class="profile_hr" />
+    <div class="d-flex align-items-center justify-content-between ion-padding" (click)="onGrades()">
+      <div class="d-flex align-items-center">
+        <ion-img src="assets/img/result.png"></ion-img>
+        <p class="profile_grades m-2">Grades</p>
+      </div>
+      <ion-icon slot="end" color="primary" size="large" name="chevron-forward-sharp"></ion-icon>
+    </div>
+    <div (click)="onBadges()" class="d-flex align-items-center justify-content-between ion-padding pt-0">
+      <div class="d-flex align-items-center">
+        <ion-img class="p-1" src="assets/icon/trophy.svg"></ion-img>
+        <p class="profile_grades m-2">Badges</p>
+      </div>
+      <ion-icon slot="end" color="primary" size="large" name="chevron-forward-sharp"></ion-icon>
+    </div>
+    <hr class="profile_hr" /> -->
+  </ion-content>
+  <ion-footer [translucent]="true" class="ion-padding">
+    <ion-toolbar>
+      <ion-button expand="block" color="danger" class="logout_btn" (click)="onLogout()"><ion-icon
+          name="power-sharp"></ion-icon><span class="logout_span p-1">Logout</span></ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>
+<!-- Profile Menu End -->
+<ion-header [translucent]="true" class="mb-2">
+  <ion-toolbar>
+    <ion-item lines="none" class="p-0 m-0">
+      <ion-img slot="start" class="profile_img m-2" src="assets/img/Logo 3x.jpg"></ion-img>
+      <ion-label slot="start" class="header">GURUKUL</ion-label>
+      <ion-img slot="end" class="profile_img" [src]="userImg ? userImg : 'assets/img/user.png'" (click)="onProfile()"></ion-img>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <div class="main text-center" *ngIf="notifications.length == 0">
+    <ion-img class="image mb-1" src="assets/icon/bell.svg"></ion-img>
+    <!-- <ion-icon size="large" name="notifications-sharp"></ion-icon> -->
+    <p class="main_p">There are no notifications</p>
+  </div>
+
+  <ion-list [inset]="true" *ngIf="notifications.length > 0">
+    <ion-item [button]="true" detail="false" *ngFor="let notification of notifications" (click)="toggleNotificationDetailAlert(notification)">
+      <ion-avatar aria-hidden="true" slot="start">
+        <img alt="" [src]="notification.iconurl" />
+      </ion-avatar>
+      <ion-label>
+        <strong>{{notification.shortenedsubject}}</strong><br>
+        <ion-note color="medium" class="ion-text-wrap">
+          {{notification.smallmessage}}
+        </ion-note>
+      </ion-label>
+      <div class="metadata-end-wrapper" slot="end">
+        <ion-note color="medium">{{notification.timecreated | date : 'h:mm'}}</ion-note>
+        <ion-icon color="medium" name="chevron-forward"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-alert
+  [isOpen]="isNotificationAlertOpen"
+  [header]="singleNotificationData?.shortenedsubject"
+  [message]="singleNotificationData?.fullmessage"
+  (didDismiss)="toggleNotificationDetailAlert('')"
+  [buttons]="alertButtons"
+></ion-alert>
+</ion-content>
+<app-footer></app-footer>

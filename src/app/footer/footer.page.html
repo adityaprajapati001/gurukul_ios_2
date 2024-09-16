@@ -1,0 +1,37 @@
+<ion-footer class="footer ion-padding">
+  <div class="col-12 footer_main">
+      <ion-tabs>
+        <ion-tab-bar slot="bottom" class="ion-padding">
+          <ion-tab-button (click)="onHome()">
+            <!-- <ion-img *ngIf="URL !== '/home'" src="assets/icon/mortarboard.svg"></ion-img>
+            <ion-img *ngIf="URL === '/home'" src="assets/icon/mortarboard_blue.svg"></ion-img> -->
+            <ion-icon *ngIf="URL !== '/home'" size="large" name="school-sharp"></ion-icon>
+            <ion-icon *ngIf="URL === '/home'" size="large" color="primary" name="school-sharp"></ion-icon>
+          </ion-tab-button>
+          <ion-tab-button (click)="onCalendar()">
+            <ion-icon *ngIf="URL !== '/calendar'" size="large" name="calendar-sharp"></ion-icon>
+            <ion-icon *ngIf="URL === '/calendar'" size="large" color="primary" name="calendar-sharp"></ion-icon>
+            <!-- <ion-img *ngIf="URL !== '/calendar'" src="assets/icon/course.svg"></ion-img>
+            <ion-img *ngIf="URL === '/calendar'" src="assets/icon/course_blue.svg"></ion-img> -->
+          </ion-tab-button>
+          <ion-tab-button (click)="onChat()">
+            <!-- <ion-img *ngIf="URL !== '/chat'" src="assets/icon/chat.svg"></ion-img>
+            <ion-img *ngIf="URL === '/chat'" src="assets/icon/chat_blue.svg"></ion-img> -->
+
+            <ion-icon *ngIf="URL !== '/chat'" size="large" name="chatbubbles-sharp"></ion-icon>
+            <ion-icon *ngIf="URL === '/chat'" size="large" color="primary" name="chatbubbles-sharp"></ion-icon>
+          </ion-tab-button>
+          <!-- <ion-tab-button (click)="onBell()">
+            <ion-icon *ngIf="URL !== '/notification'" size="large" name="notifications-sharp"></ion-icon>
+            <ion-icon *ngIf="URL === '/notification'" size="large" color="primary" name="notifications-sharp"></ion-icon>
+          </ion-tab-button> -->
+          <ion-tab-button (click)="onMore()">
+            <!-- <ion-img *ngIf="URL !== '/more'" src="assets/icon/more.png"></ion-img>
+            <ion-img *ngIf="URL === '/more'" src="assets/icon/more_blue.svg"></ion-img> -->
+            <ion-icon *ngIf="URL !== '/more'" size="large" name="ellipsis-horizontal-sharp"></ion-icon>
+            <ion-icon *ngIf="URL === '/more'" size="large" color="primary" name="ellipsis-horizontal-sharp"></ion-icon>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+    </div>
+</ion-footer>

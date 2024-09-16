@@ -1,0 +1,73 @@
+
+
+
+<!-- <iframe
+  src="../../../assets/phishing/launcher.html"
+  width="100%"
+  height="100%"
+  frameborder="0"
+  style="border: none;"
+></iframe> -->
+
+<!-- <iframe
+  src="../../../assets/Introduction/launcher.html"
+  width="100%"
+  height="100%"
+  frameborder="0"
+  style="border: none;"
+></iframe> -->
+
+
+
+<iframe
+  src="../../../assets/posh-awareness-training-scorm12-w7nkT0zr/scormcontent/index.html"
+  width="100%"
+  height="100%"
+  frameborder="0"
+  style="border: none;"
+></iframe>
+
+
+<section id="option-pane"  class="option-pane" style="position: absolute; left: 0px; top: 0px; overflow: visible; transform-origin: center center; z-index: 10; width: 430px; height: 100px; transform: translate(0px, 565px) scale(1);">
+  <ion-button (click)="sendScormData()" [disabled]="!resumer">Submit</ion-button>
+</section>
+
+<ion-button (click)="submit()" id="submit">
+  <div class="icon">check button
+  </div>
+</ion-button>
+
+
+<!-- <div *ngIf="receivedHtmlValue">
+  <div [innerHTML]="receivedHtmlValue"></div>
+  <div>{{updateScore}}fdgfdgfd</div>
+</div> -->
+<!-- 
+<div *ngIf="decodedHtmlValue">
+  <h2>Decoded HTML Value:</h2>
+  <div [innerHTML]="decodedHtmlValue"></div>
+</div> -->
+
+<div *ngIf="updateScore">
+  <h2>Decoded HTML2 Value:</h2>
+  <div [innerHTML]="updateScore"></div>
+</div>
+
+<div *ngIf="tValue">
+  <h2>T Value:</h2>
+  <div>{{ tValue }}</div>
+</div>
+
+<div *ngIf="resumer">
+  <h2>resumer Value:</h2>
+  <div>{{ resumer }}</div>
+</div>
+
+<!-- <ion-button (click)="sendScormData()" [disabled]="!resumer">Save SCORM Data</ion-button> -->
+<ion-button (click)="home()">Save SCORM Data</ion-button>
+
+
+
+
+
+

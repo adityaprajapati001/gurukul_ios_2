@@ -1,0 +1,192 @@
+<ion-content [fullscreen]="true">
+  <div class="top h-100">
+    <div class="main">
+      <div class="h-100">
+        <div class="header text-center">
+          <ion-img class="" src="assets\img\group.png" alt="logo"></ion-img>
+        </div>
+
+        <div class="container p-0">
+          <div class="container_sub">
+            <div class="form">
+              <!-- <p class="heading" (click)="changeForm('otp')">
+                Login Via User ID
+              </p> -->
+              <ion-segment
+                value="user"
+                (ionChange)="segmentChanged($event)"
+                id="segment"
+              >
+                <ion-segment-button class="heading" value="user">
+                  <ion-label [ngClass]="segment == 'user' ? 'text-color' : ''">Login Via User ID</ion-label>
+                </ion-segment-button>
+                <ion-segment-button class="heading" value="otp">
+                  <ion-label [ngClass]="segment == 'otp' ? 'text-color' : ''">Login Via OTP</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              <div class="form_main" *ngIf="segment === 'user'">
+                <form
+                  [formGroup]="loginForm"
+                  (ngSubmit)="onSubmit()"
+                  novalidate
+                >
+                  <div class="form-group">
+                    <label for="username" class="form_label">
+                      <span class="glyphicon glyphicon-user"></span>User
+                      ID</label
+                    >
+                    <div class="col-12 d-flex align-items-center">
+                      <ion-img class="icon" src="assets/icon/user.svg" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="username"
+                        id="username"
+                        placeholder="Enter Username"
+                        name="username"
+                      />
+                    </div>
+                    <hr class="hr" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form_label" for="password">
+                      <span class="glyphicon glyphicon-user"></span
+                      >Password</label
+                    >
+                    <div class="col-12 d-flex align-items-center">
+                      <ion-img
+                        slot="start"
+                        class="icon"
+                        src="assets/icon/padlock.svg"
+                        alt=""
+                      />
+                      <input
+                        class="form-control"
+                        id="password"
+                        formControlName="password"
+                        placeholder="Enter password"
+                        name="password"
+                        [type]="showPassword ? 'text':'password'"
+                      />
+                      <!-- <ion-icon class="p-2" [name]="passwordToggleIcon" (click)="toggle()"></ion-icon> -->
+                      <ion-icon
+                        style="color: #000"
+                        [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
+                        slot="end"
+                        (click)="showPassword = !showPassword"
+                      ></ion-icon>
+                    </div>
+                    <hr class="hr" />
+                  </div>
+                  <div
+                    class="col-12 d-flex align-items-center justify-content-between"
+                  >
+                    <div>
+                      <ion-checkbox
+                        labelPlacement="end"
+                        formControlName="rememberMe"
+                        class="remember mb-2"
+                        >Remember Me</ion-checkbox
+                      >
+
+                      <!-- <p class="fgt_pwd" *ngIf="isPasswordCorrect == null" routerLink="/forgot-pwd">
+                        {{ isPasswordCorrect? 'forgot password' : 'new password'}}
+                      </p> -->
+
+                      <p class="fgt_pwd" routerLink="/forgot-pwd">
+                       Forgot Password ?
+                      </p>
+
+
+                    </div>
+                    <ion-button
+                      id="loginBtn"
+                      color="success"
+                      type="submit"
+                      class="btn_login"
+                      [disabled]="loginForm.invalid"
+                    >
+                      <span class="span_login">Sign In</span>
+                    </ion-button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="form_main" *ngIf="segment === 'otp'">
+                <form
+                  [formGroup]="otpLoginForm"
+                  (ngSubmit)="onSubmitOtp()"
+                  novalidate
+                >
+                  <div class="form-group">
+                    <label for="phone" class="form_label">Mobile Number</label>
+
+                    <div class="col-12 d-flex align-items-center">
+                      <ion-img class="icon" src="assets/icon/phone.svg" />
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="phone"
+                        id="phone"
+                        placeholder="Enter Phone"
+                        name="phone"
+                        (input)="onMaxPhone($event)"
+                      />
+                      <ion-icon
+                        *ngIf="isPhoneValid()"
+                        color="success"
+                        name="checkmark-circle-sharp"
+                      ></ion-icon>
+                    </div>
+                    <hr class="hr" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form_label" for="otp">OTP</label>
+                    <div class="col-12 d-flex align-items-center">
+                      <ion-img class="icon" src="assets/icon/padlock.svg" />
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="otp"
+                        formControlName="otp"
+                        placeholder="Enter OTP"
+                        name="otp"
+                        oninput="this.value = this.value.slice(0, 6)"
+                      />
+                    </div>
+                    <hr class="hr" />
+                  </div>
+                  <div
+                    class="col-12 d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fgt_pwd" (click)="resendOtp()" *ngIf="!isVisible">
+                      Resent OTP?
+                    </p>
+                    <p
+                      class="fgt_pwd"
+                      [ngStyle]="{'color': timerColor}"
+                      *ngIf="isVisible"
+                    >
+                      00:{{remainingTime}}
+                    </p>
+                    <ion-button
+                      color="success"
+                      type="submit"
+                      class="btn_login"
+                      [disabled]="otpLoginForm.invalid"
+                    >
+                      <span class="span_login">Sign In</span>
+                    </ion-button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div>
+        <ion-img class="footer_img" src="assets/img/footer_img.png"></ion-img>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

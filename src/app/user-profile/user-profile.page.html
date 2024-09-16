@@ -1,0 +1,38 @@
+<div class="ion-page">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-back-button color="primary" slot="start" defaultHref=""></ion-back-button>
+      <ion-title>User Profile</ion-title>
+      <!-- <ion-img class="p-2" slot="end" src="assets/icon/download.svg" alt=""></ion-img> -->
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding>
+    <div class="profile-container" *ngIf="userData">
+      <!-- <div class=""> -->
+        <ion-item class="profile-header border p-1" line="none">
+          <ion-img class="profile_img" [src]="userImg ? userImg : 'assets/img/user.png'" class="img-fluid rounded-start profile_img" alt="">{{userImg}}</ion-img>
+          <p class="profile_name m-3 p-3"><strong>{{userData[0].fullname}}</strong></p>
+
+        </ion-item>
+      <!-- </div> -->
+      <ion-list>
+        <ion-item>
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label>{{ userData[0].idnumber }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label>{{ userData[0].email }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="call" slot="start"></ion-icon>
+          <ion-label>{{ userData[0].phone1 }}</ion-label>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-icon name="briefcase" slot="start"></ion-icon>
+          <ion-label>{{ userData[0].designation }}</ion-label>
+        </ion-item> -->
+      </ion-list>
+    </div>
+  </ion-content>
+</div>

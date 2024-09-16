@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>PDF Viewer</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="close-sharp" size="large" (click)="dismiss()">Close</ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid *ngIf="pdfUrl">
+    <ion-row>
+      <ion-col size="12">
+        <!-- <pdf-viewer [src]="pdfUrl"
+        [render-text]="true"
+        [original-size]="false"
+        style="width: 100%; height: 90vh"
+      ></pdf-viewer> -->
+      <ngx-extended-pdf-viewer [src]="pdfUrl"></ngx-extended-pdf-viewer>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

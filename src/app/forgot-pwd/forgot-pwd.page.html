@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="true">
+  <div class="top h-100">
+    <div class="main">
+      <div class="h-100">
+        <div class="header text-center">
+          <ion-img src="assets/img/group.png" alt=""></ion-img>
+        </div>
+        <div class="container p-0">
+          <div class="container_sub">
+            <div class="form">
+              <p class="heading">Reset Password</p>
+
+              <!-- <p class="fgt_pwd" *ngIf="isPasswordCorrect == null" routerLink="/forgot-pwd">
+                        {{ isPasswordCorrect? 'forgot password' : 'reset password'}}
+              </p> -->
+              
+              <div class="form_main">
+                <form [formGroup]="forgotForm" (ngSubmit)="onSubmit()" novalidate>
+                  <div class="form-group">
+                    <label for="username" class="form_label">
+                      <span class="glyphicon glyphicon-user"></span>Enter your Email
+                      Address</label><br />
+                    <p class="note" color="success">
+                      (password reset link will be sent to the your email address)
+                    </p>
+                    <div class="col-12 d-flex align-items-center">
+                      <input type="text" class="form-control" formControlName="username" id="username"
+                        placeholder="Enter Email" name="username" />
+                    </div>
+                    <hr class="hr mb-3" />
+                  </div>
+                  <div class="col-12 d-flex align-items-center justify-content-center">
+                    <ion-button color="success" type="submit" class="btn_login" [disabled]="forgotForm.invalid">
+                      <span class="span_login">Submit</span>
+                    </ion-button>
+
+                    <ion-button color="success" (click)="onlogin()" class="btn_login">
+                      <span class="span_login">Login</span>
+                    </ion-button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- <div>
+        <ion-img class="footer_img" src="assets/img/footer_img.png"></ion-img>
+      </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

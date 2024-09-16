@@ -1,0 +1,45 @@
+{
+	"appId": "com.app.Gurukul",
+	"appName": "Gurukul",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https",
+		"allowNavigation": [
+			"*"
+		]
+	},
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 3000,
+			"launchAutoHide": true,
+			"backgroundColor": "#ffffffff",
+			"androidSplashResourceName": "splash",
+			"showSpinner": false,
+			"androidSpinnerStyle": "small",
+			"iosSpinnerStyle": "small",
+			"splashFullScreen": true,
+			"splashImmersive": true,
+			"layoutName": "launch_screen",
+			"useDialog": true
+		},
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		}
+	},
+	"packageClassList": [
+		"PrivacyScreenPlugin",
+		"AppPlugin",
+		"CAPBrowserPlugin",
+		"FilesystemPlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"CAPNetworkPlugin",
+		"PushNotificationsPlugin",
+		"SplashScreenPlugin",
+		"StatusBarPlugin"
+	]
+}

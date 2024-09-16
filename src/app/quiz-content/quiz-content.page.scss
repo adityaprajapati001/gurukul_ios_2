@@ -1,0 +1,114 @@
+.title {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+.time_h {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+.time_p {
+  color: #3553a1;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+.card {
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+}
+.card_head {
+  color: #3553a1;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+.card_en {
+  margin: 0;
+  color: #464646;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.card_hn {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+.clear {
+  --border-radius: 4px;
+  --border: 1px solid #3553a1;
+  --background: #fff;
+}
+.span_clear {
+  color: #3553a1;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.btn_nxt {
+  border-radius: 4px;
+}
+.span_nxt {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.list_left {
+  color: #565656;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.list_ryt {
+  color: #565656;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.label_left {
+  color: #565656;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.deadline {
+  color: #464646;
+  font-family: "Inter",sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+/* Menu CSS Starts */
+.menu_title {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+.menu_label {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.r0{
+  display: flex !important;
+  align-items: center;
+}
+
+.reset-scroll {
+  scroll-behavior: auto; /* or smooth for smooth scrolling */
+}
+
+.reset-scroll:target {
+  scroll-behavior: auto; /* or smooth for smooth scrolling */
+  scroll-margin-top: 0; /* Scroll to top */
+}

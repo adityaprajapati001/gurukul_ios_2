@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://uat-gurukul.skfin.in",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

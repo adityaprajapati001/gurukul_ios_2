@@ -1,0 +1,102 @@
+<ion-menu side="end" contentId="main-content" menuId="attemptMenu">
+  <ion-header class="menu_header">
+    <ion-toolbar>
+      <ion-title class="menu_title">Quiz Navigation</ion-title>
+      <ion-icon (click)="onClose()" class="p-1" slot="end" size="large" name="close-sharp"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list lines="none" class="p-0" *ngFor="let item of quizContent">
+      <ion-item>
+        <ion-label class="menu_label">{{item.heading}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button color="primary" slot="start" defaultHref=""></ion-back-button>
+    <ion-title class="title"></ion-title>
+    <!-- <ion-icon (click)="onBookmark()" class="p-1" slot="end" size="large" color="primary"
+      name="bookmark-outline"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <div class="main h-100 position-relative">
+    <div class="ion-padding">
+      <ion-card class="p-3 mb-3">
+        <h1 class="card_head mt-0">Summary of Attempt</h1>
+        <ion-list lines="none" class="mb-3">
+          <ion-item>
+            <ion-label class="list_left">#</ion-label>
+            <ion-label class="list_ryt">Summary</ion-label>
+          </ion-item>
+          <ion-item *ngFor="let item of attemptData">
+            <ion-label class="label_left">{{item.slot}}</ion-label>
+            <ion-label>
+              <div class="d-flex align-items-center justify-content-between" (click)="goToQues(item)">
+                <p class="label_left">{{item.answer != '-1' ? 'Answered' : 'Not Answered'}}</p>
+                <ion-icon color="primary" slot="end" name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-label>
+          </ion-item>
+          <!-- <ion-item>
+            <ion-label class="label_left">2</ion-label>
+            <ion-label>
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="label_left">Answer Saved</p>
+                <ion-icon color="primary" slot="end" name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label_left">3</ion-label>
+            <ion-label>
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="label_left">Answer Saved</p>
+                <ion-icon color="primary" slot="end" name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label_left">4</ion-label>
+            <ion-label>
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="label_left">Answer Saved</p>
+                <ion-icon color="primary" slot="end" name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label_left">5</ion-label>
+            <ion-label>
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="label_left">Answer Saved</p>
+                <ion-icon color="primary" slot="end" name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label_left">6</ion-label>
+            <ion-label>
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="label_left">Answer Saved</p>
+                <ion-icon color="primary" slot="end" name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </ion-label>
+          </ion-item> -->
+        </ion-list>
+        <!-- <p class="deadline">
+          This attempt must be submitted by Monday, 19 February 2024, 10:12 AM
+        </p> -->
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+<ion-footer [translucent]="true">
+  <ion-toolbar class="p-1">
+    <ion-button class="btn_nxt" color="success" expand="block" (click)="onSubmit()"><span class="span_nxt">Submit all
+        and Finish</span></ion-button>
+  </ion-toolbar>
+</ion-footer>

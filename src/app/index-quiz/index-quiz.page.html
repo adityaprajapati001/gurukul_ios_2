@@ -1,0 +1,320 @@
+<div class="ion-page">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-back-button color="primary" slot="start" defaultHref=""></ion-back-button>
+      <!-- <ion-img class="p-2" slot="end" src="assets/icon/download.svg" alt=""></ion-img> -->
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <div class="h-100 position-relative overflow-auto">
+      <div class="main">
+        <div class="p-3 d-flex align-items-center">
+          <ion-img src="assets/img/quiz.png" alt=""></ion-img>
+          <p class="content_p ms-2" [innerHTML]="quizName"></p>
+        </div>
+        <div class="content_main">
+          <div class="col-12">
+            <div class="content_head pt-0">
+              <ion-badge color="primary" class="col-2 card_badge">To Do&nbsp;<ion-icon name="caret-down-sharp"
+                  (click)="presentPopover($event)"></ion-icon></ion-badge>
+              <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+                <ng-template>
+                  <ion-content>
+                    <ion-list class="p-0">
+                      <ion-item lines="none">
+                        <div>
+                          <h1 class="pop_head m-0 p-0">You Must</h1>
+                          <p class="pop_body m-0 p-0">Received a Grade</p>
+                        </div>
+                      </ion-item>
+                    </ion-list>
+                  </ion-content>
+                </ng-template>
+              </ion-popover>
+            </div>
+          </div>
+          <div class="col-12 p-3">
+            <!-- <ion-card class="card">
+              <ion-card-content class="m-0 p-0"> -->
+                <ion-list lines="none" class="list">
+                  <ion-item>
+                    <ion-label class="ryt_label text-center">Attempts Allowed: <span>{{quizAttamptData?.attempts}}</span></ion-label>
+                    <!-- <ion-label class="ryt_label"></ion-label> -->
+                  </ion-item>
+                  <ng-container *ngIf="maxQuizAttamptData?.length > 0">
+                    <ion-list *ngFor="let val of maxQuizAttamptData">
+                      <ion-card class="card shadow">
+                        <ion-item>
+                          <ion-label class="ryt_label">Attempts: <span>{{val.attempt}}</span></ion-label>
+                          <!-- <ion-label class="ryt_label"></ion-label> -->
+                        </ion-item>
+                        <ion-item>
+                          <ion-label class="ryt_label">Sum Grades: <span>{{val.gradesOfAttempt}}</span></ion-label>
+                          <!-- <ion-label class="ryt_label"></ion-label> -->
+                        </ion-item>
+                        <ion-item>
+                          <ion-label class="ryt_label">Time Limit : <span>{{quizAttamptData?.timelimit?.split('.')[0]}}
+                              Minutes</span></ion-label>
+                          <!-- <ion-label class="ryt_label"></ion-label> -->
+                        </ion-item>
+                        <ion-item>
+                          <ion-label class="ryt_label">Grading Method : Highest Grade </ion-label>
+                          <!-- <ion-label class="left_label">Grading Method : Highest Grade </ion-label> -->
+                          <!-- <ion-label class="ryt_label"></ion-label> -->
+                        </ion-item>
+                        <ion-item>
+                          <ion-label class="ryt_label">Grade to Pass :
+                            <span>{{quizAttamptData?.gradepass}} out of
+                              {{quizAttamptData?.grademax}}</span></ion-label>
+                        </ion-item>
+                        <ion-card class="card">
+                          <ion-card-header class="card_head mt-0 p-2 text-center">Summary of Previous Attempts</ion-card-header>
+                          <ion-card-content class="m-0 p-0">
+                            <ion-list lines="none">
+                              <ion-row>
+                                <ion-col size="5">
+                                  <ion-item>
+                                    <ion-label>Grade : </ion-label>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="7">
+                                  <ion-item>
+                                    <ion-badge class="p-2" color="warning" *ngIf="data">{{val.gradesOfAttempt}}</ion-badge>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="5">
+                                  <ion-item>
+                                    <ion-label>State : </ion-label>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="7">
+                                  <ion-item>
+                                    <ion-badge class="p-2" color="warning" *ngIf="data">{{val.state | titlecase}}</ion-badge>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="5">
+                                  <ion-item>
+                                    <ion-label>Review : </ion-label>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="7">
+                                  <ion-item>
+                                    <ion-badge class="p-2" color="danger">Not Permitteed</ion-badge>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="5">
+                                  <ion-item>
+                                    <ion-label>Submitted On : </ion-label>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="7">
+                                  <ion-item>
+                                    <!-- <ion-label class="p-2">{{convertTimestamp(quizFinishTime)}}</ion-label> -->
+                                    <!-- <ion-label class="p-2">{{quizAttamptData?.timefinish}}</ion-label> -->
+                                    <ion-label class="p-2">{{convertTimestamp(timefinish)}}</ion-label>
+                                  </ion-item>
+                                </ion-col>
+                              </ion-row>
+                            </ion-list>
+                          </ion-card-content>
+                        </ion-card>
+                      </ion-card>
+                    </ion-list>
+                  </ng-container>
+                  <ng-container *ngIf="maxQuizAttamptData?.length == 0">
+                    <ion-list>
+                      <ion-card class="card shadow">
+                        <ion-item>
+                          <ion-label class="ryt_label">Attempts: <span>--</span></ion-label>
+                          <!-- <ion-label class="ryt_label"></ion-label> -->
+                        </ion-item>
+                        <ion-item>
+                          <ion-label class="ryt_label">Sum Grades: <span>--</span></ion-label>
+                          <!-- <ion-label class="ryt_label"></ion-label> -->
+                        </ion-item>
+                        <ion-item>
+                          <ion-label class="ryt_label">Time Limit : <span>{{quizAttamptData?.timelimit?.split('.')[0]}}
+                              Minutes</span></ion-label>
+                          <!-- <ion-label class="ryt_label"></ion-label> -->
+                        </ion-item>
+                        <ion-item>
+                          <ion-label class="ryt_label">Grading Method : Highest Grade </ion-label>
+                          <!-- <ion-label class="left_label">Grading Method : Highest Grade </ion-label> -->
+                          <!-- <ion-label class="ryt_label"></ion-label> -->
+                        </ion-item>
+                        <ion-item *ngIf="quizAttamptData">
+                          <ion-label class="ryt_label">Grade to Pass :
+                            <span>{{quizAttamptData?.gradepass}} out of
+                              {{quizAttamptData?.grademax}}</span></ion-label>
+                        </ion-item>
+                        <ion-card class="card">
+                          <ion-card-header class="card_head mt-0 p-2 text-center">Summary of Previous Attempts</ion-card-header>
+                          <ion-card-content class="m-0 p-0">
+                            <ion-list lines="none">
+                              <ion-row>
+                                <ion-col size="5">
+                                  <ion-item>
+                                    <ion-label>State : </ion-label>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="7">
+                                  <ion-item>
+                                    <ion-badge class="p-2" color="warning" *ngIf="data">--</ion-badge>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="5">
+                                  <ion-item>
+                                    <ion-label>Review : </ion-label>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="7">
+                                  <ion-item>
+                                    <ion-badge class="p-2" color="danger">--</ion-badge>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="5">
+                                  <ion-item>
+                                    <ion-label>Submitted On : </ion-label>
+                                  </ion-item>
+                                </ion-col>
+                                <ion-col size="7">
+                                  <ion-item>
+                                    <ion-label class="p-2"></ion-label>
+                                  </ion-item>
+                                </ion-col>
+                              </ion-row>
+                            </ion-list>
+                          </ion-card-content>
+                        </ion-card>
+                      </ion-card>
+                    </ion-list>
+                  </ng-container>
+              
+                  <!-- <ion-item>
+                    <ion-label class="ryt_label">{{quizAttamptData?.gradepass?.split('.')[0]+'.00'}} out of {{quizAttamptData?.grademax?.split('.')[0]+'.00'}}</ion-label>
+                  </ion-item> -->
+                </ion-list>
+              <!-- </ion-card-content>
+            </ion-card> -->
+          </div>
+        </div>
+
+        <!-- <div class="col-12 p-3 pt-0" *ngIf="showGrade">
+          <ion-card class="card">
+            <h3 class="text-center" *ngIf="data"> Attempt : <span>{{data?.attempt?.attempt}}</span></h3>
+            <ion-card-header class="card_head mt-0 p-2 text-center">Summary of Previous Attempts</ion-card-header>
+            <ion-card-content class="m-0 p-0">
+              <ion-list lines="none">
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-item class="col-6">
+                      <ion-label>State : </ion-label>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-badge class="p-2" color="warning" *ngIf="data">{{data?.attempt?.state | titlecase}}</ion-badge>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label>Review : </ion-label>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-badge class="p-2" color="danger">Not Permitteed</ion-badge>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label>Submitted On : </ion-label>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                      <ion-label class="p-2">{{convertTimestamp(data?.attempt?.timestart)}}</ion-label>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-item>
+                  <ion-label>#</ion-label>
+                  <ion-label>State</ion-label>
+                  <ion-label>Grade</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>1</ion-label>
+                  <ion-label>Finished</ion-label>
+                  <ion-label>{{quizGrade | number: '1.0-1'}}</ion-label>
+                </ion-item> -->
+                <!-- <div class="row">
+                  <div class="col-1">
+                    <p class="table_head">#</p>
+                  </div>
+                  <div class="col-8">
+                    <p class="table_head">State</p>
+                  </div>
+                  <div class="col">
+                    <p class="table_head">Grade</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1">
+                    <p class="table_content">1</p>
+                  </div>
+                  <div class="col-8">
+                    <p class="col mb-0 table_content">Finished</p>
+                    <p class="table_content">
+                      Submitted Monday, 19 February 2924, 10:23 AM
+                    </p>
+                  </div>
+                  <div class="col">{{quizGrade | number: '1.0-1'}}</div>
+                </div> -->
+              <!-- </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </div>  -->
+        <div class="col-12 p-3 pt-0" *ngIf="showGrade">
+          <ion-card class="card mb-3">
+            <ion-card-content class="m-0 p-0">
+              <ion-list lines="none">
+                <ion-item>
+                  <ion-label>Highest Grade <strong>1/10</strong></ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+          <div>
+            <!-- <ion-button class="start_btn" expand="block" color="success" (click)="onStart()"
+              ><span class="start_span"
+                >Re-attempt Quiz</span
+              ></ion-button
+            > -->
+          </div>
+        </div>
+      </div>
+      <!-- <div class="p-3 position-absolute w-100 bottom-0" *ngIf="!showGrade">
+        <ion-button class="start_btn" expand="block" color="success" (click)="onStart()"
+          ><span class="start_span" 
+            >Attempt Quiz Now</span
+          ></ion-button
+        >
+      </div> -->
+    </div>
+  </ion-content>
+  <ion-footer [translucent]="true">
+    <ion-toolbar>
+      <div class="col-12 d-flex align-items-center justify-content-between">
+        <div class="col-12 p-3 pt-0" *ngIf="showGrade && showButton">
+          <ion-button class="start_btn" expand="block" color="success" (click)="onStart()"><span
+              class="start_span">Re-attempt Quiz</span></ion-button>
+        </div>
+        <div class="p-3 w-100" *ngIf="!showGrade && showButton">
+          <ion-button class="start_btn" expand="block" color="success" (click)="onStart()"><span
+              class="start_span">Attempt Quiz Now</span></ion-button>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+</div>

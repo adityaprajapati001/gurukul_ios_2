@@ -1,0 +1,277 @@
+<ion-menu side="end" contentId="main-content" menuId="chatProfile">
+  <ion-header>
+    <ion-toolbar>
+      <ion-item lines="none">
+        <ion-label slot="start" class="profile_heading ps-3">User Account</ion-label>
+        <ion-icon class="p-1" slot="end" size="large" name="close-sharp" (click)="onClose()"></ion-icon>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <!-- <div class="col-12 text-center ion-padding">
+      <h1 class="profle_title">GURUKUL</h1> -->
+      <!-- <div class="d-flex justify-content-center mb-3">
+        <a (click)="openCapacitorSite()" class="profile_link">https://uat-gurukul.skfin.in</a>
+      </div> -->
+    <!-- </div>
+    <hr class="profile_hr" /> -->
+    
+    <!-- <ng-container *ngIf="userData">
+      <div class="d-flex align-items-center justify-content-between ion-padding"
+        *ngFor="let item of userData; let i = index">
+        <div class="d-flex align-items-center">
+          <ion-img [src]="item.profileimageurl" class="img-fluid rounded-start profile_img" alt=""></ion-img>
+          <p class="profile_name m-1">{{item.fullname}}</p>
+        </div>
+      </div>
+    </ng-container> -->
+    <ng-container>
+      
+      <!-- <div class="d-flex align-items-center justify-content-between ion-padding" *ngFor="let item of userData; let i = index">
+        <div class="d-flex align-items-center" (click)="onClickUser()">
+          <ion-img [src]="item.profileimageurl" class="img-fluid rounded-start profile_img" alt=""></ion-img>
+          <p class="profile_name m-1">{{item.fullname}}</p>
+        </div>
+      </div> -->
+
+      <!-- <div> -->
+        <ion-content padding> 
+        
+          
+       <div class="profile-container" *ngIf="userDataProfile">
+            <!-- Profile Header -->
+            <ion-item class="profile-header border p-1" line="none">
+              <ion-img [src]="userImg ? userImg : 'assets/img/user.png'" class="img-fluid rounded-start profile-Img-side" alt=""></ion-img>
+              <p class="profile_name m-1 p-2"><strong>{{userDataProfile[0].fullname}}</strong></p>
+            </ion-item>
+        
+            <!-- User Information List -->
+            <ion-list>
+              <ion-item>
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-label>{{ userDataProfile[0].username }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="mail" slot="start"></ion-icon>
+                <ion-label>{{ userDataProfile[0].email }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="call" slot="start"></ion-icon>
+                <ion-label>{{ userDataProfile[0].phone1 }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="location" slot="start"></ion-icon>
+                <ion-label>
+                  <p>SK Finance Ltd. 
+                  Adarsh Plaza,
+                  Khasa Kothi Circle,
+                  Jaipur-302001,
+                  Rajasthan,
+                  Ph: 01414161641
+                </ion-label>
+              </ion-item>
+            </ion-list>
+        
+            <!-- New Address Section -->
+            <ion-list class="">
+              <!-- Reach out to us Section -->
+              <ion-item >
+                <ion-label class="text-center">
+                  <strong >Reach out to us:</strong>
+                </ion-label>
+              </ion-item>
+              <ion-item class="text-center" lines="none">
+                <ion-row class="row">
+                 <ion-col size="4" class="col-3"></ion-col>
+                  <ion-col size="2" class="col-3" class="ion-text-center flex-end">
+                    <a href="mailto:learning@skfin.in">
+                      <ion-icon size="large" name="mail" color="primary"></ion-icon>
+                    </a>
+                  </ion-col>
+                  <ion-col size="4" class="col-3"></ion-col>
+                  <ion-col size="2" class="col-3 ion-text-center flex-start">
+                    <a href="tel:01414161641">
+                      <ion-icon size="large" name="call" color="success"></ion-icon>
+                    </a>
+                  </ion-col>
+                 
+                </ion-row>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-content>
+      <!-- </div> -->
+    </ng-container>
+    <!-- <hr class="profile_hr" />
+    <div class="d-flex align-items-center justify-content-between ion-padding" (click)="onGrades()">
+      <div class="d-flex align-items-center">
+        <ion-img src="assets/img/result.png"></ion-img>
+        <p class="profile_grades m-2">Grades</p>
+      </div>
+      <ion-icon slot="end" color="primary" size="large" name="chevron-forward-sharp"></ion-icon>
+    </div>
+    <div (click)="onBadges()" class="d-flex align-items-center justify-content-between ion-padding pt-0">
+      <div class="d-flex align-items-center">
+        <ion-img class="p-1" src="assets/icon/trophy.svg"></ion-img>
+        <p class="profile_grades m-2">Badges</p>
+      </div>
+      <ion-icon slot="end" color="primary" size="large" name="chevron-forward-sharp"></ion-icon>
+    </div>
+    <hr class="profile_hr" /> -->
+    <!-- <div class="d-flex align-items-center justify-content-between ion-padding">
+      <div class="d-flex align-items-center">
+        <ion-icon class="setting_icon p-1" name="settings-outline"></ion-icon>
+        <p class="profile_grades m-1">Prefrences</p>
+      </div>
+      <ion-icon
+        (click)="onPreferences()"
+        slot="end"
+        color="primary"
+        size="large"
+        name="chevron-forward-sharp"
+      ></ion-icon>
+    </div> -->
+  </ion-content>
+  <ion-footer [translucent]="true" class="ion-padding">
+    <ion-toolbar>
+      <ion-button expand="block" color="danger" class="logout_btn" (click)="onLogout()"><ion-icon
+          name="power-sharp"></ion-icon><span class="logout_span p-1">Logout</span></ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-item lines="none" class="p-0 m-0">
+      <ion-label slot="start" class="header p-2">Messages</ion-label>
+      <ion-icon  slot="end" (click)="toggleSearch()" size="large" name="search-outline"></ion-icon>
+      <!-- <ion-icon  slot="end" size="large" name="settings-outline"></ion-icon> -->
+      <ion-img slot="end" class="profile_img" [src]="userImg ? userImg : 'assets/img/user.png'"
+        (click)="onProfile()"></ion-img>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <!-- <h1>{{username}}dsfdsfdsfds</h1> -->
+  <!-- <div *ngFor="let user of allMessagesb">
+    <h1>{{user.usertofullname}}</h1>
+  </div> -->
+
+  <ng-container *ngIf="isShowSearch">
+    <div class="search-container">
+      <ion-searchbar (ionFocus)="onSearchFocus()" (ionBlur)="onSearchBlur($event)" [debounce]="1000" show-clear-button="focus" 
+      animated="true" color="light" (ionInput)="onInputValue($event)"></ion-searchbar>
+      <div class="search-list-container" *ngIf="showUserList">
+        <ion-list lines="full">
+          <ion-item *ngFor="let user of searchedInstructors" (click)="onContact(user.id)">
+            <ng-container *ngIf="isArray">
+              {{user.firstname}} {{user.lastname}}
+            </ng-container>
+            <ng-container *ngIf="!isArray">
+              {{user.fullname}}
+            </ng-container>
+          </ion-item>
+          <ion-item *ngIf="searchedInstructors.length == 0">
+            No Data Found
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ng-container>
+  <div class="col-12 p-2">
+    <ion-accordion-group>
+      <ion-accordion class="acc_main_index" value="first" toggleIcon="">
+        <ion-item lines="none" class="acc_header_index" slot="header" (click)="toggleAccordion(1)">
+          <ion-icon slot="start" color="primary" class="p-0 m-0" [name]="isExpanded1 ? 'chevron-up' : 'chevron-forward'"
+            [style.transform]="isExpanded1 ? 'rotate(180deg)' : 'rotate(0deg)'"></ion-icon>
+          <ion-label class="acc_label">Instructors</ion-label>
+          <ion-badge slot="end" style="margin-right: 18px;" *ngIf="allunreadMessagesCount !== 0">{{allunreadMessagesCount}}</ion-badge>
+        </ion-item>       
+        <div class="ion-padding col-12" slot="content">
+
+
+          <!-- our edit -->
+          <!-- <ng-container *ngFor="let user of allMessagesb">
+            <div class="d-flex align-items-center justify-content-start mb-3 position-relative w-100" (click)="onContact(user.id)">
+              <div class="unread-indicator-wrapper" *ngIf="user?.isonline">
+                <div class="online-indicator"></div>
+              </div>
+              <h1 class="contact_name m-0 ms-2">{{user.usertofullname}}</h1>
+            </div>
+          </ng-container> -->
+          <!-- our edit -->
+
+
+          <ng-container *ngFor="let instructor of instructors">
+            <div class="d-flex align-items-center justify-content-start mb-3 position-relative w-100" (click)="onContact(instructor.id)">
+              <div class="unread-indicator-wrapper" *ngIf="instructor?.isonline">
+                <div class="online-indicator"></div>
+              </div>
+              <ion-avatar>
+                <img [src]="instructor?.profileimageurl" />
+              </ion-avatar>
+              <h1 class="contact_name m-0 ms-2">{{instructor.fullname}}</h1>
+              <ion-badge slot="end" *ngIf="instructor.unreadcount !== 0">{{instructor?.unreadcount}}</ion-badge>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="instructors.length == 0">
+            <div class="d-flex align-items-center justify-content-start mb-3 position-relative">
+              <h4>No Instructors Found</h4>
+            </div>
+          </ng-container>
+        </div>
+      </ion-accordion>
+
+      <!-- Sliding safe -->
+      <!-- <ion-accordion class="acc_main_index" value="first" toggleIcon="">
+        <ion-item lines="none" class="acc_header_index" slot="header" (click)="toggleAccordion(1)">
+          <ion-icon slot="start" color="primary" class="p-0 m-0" [name]="isExpanded1 ? 'chevron-up' : 'chevron-forward'"
+            [style.transform]="isExpanded1 ? 'rotate(180deg)' : 'rotate(0deg)'"></ion-icon>
+          <ion-label class="acc_label">Instructors</ion-label>
+        </ion-item>
+        <div class="ion-no-padding col-12" slot="content">
+          <ng-container *ngFor="let instructor of instructors">
+
+              <ion-item-sliding>
+                <ion-item lines="none">
+                  <div class="d-flex align-items-center justify-content-start mb-3 position-relative w-100" (click)="onContact(instructor.id)">
+                    <div class="unread-indicator-wrapper" *ngIf="instructor?.isonline">
+                      <div class="online-indicator"></div>
+                    </div>
+                    <ion-avatar>
+                      <img [src]="instructor?.profileimageurl" />
+                    </ion-avatar>
+                    <h1 class="contact_name m-0 ms-2">{{instructor.fullname}}</h1>
+                    <ion-badge slot="end" *ngIf="instructor.unreadcount !== 0">{{instructor?.unreadcount}}</ion-badge>
+                  </div>
+                </ion-item>
+               
+                <ion-item-options>
+                  <ion-item-option color="danger" (click)="onDeleteChat(instructor)">
+                    <ion-icon name="trash"></ion-icon>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            
+          </ng-container>
+          <ng-container *ngIf="instructors.length == 0">
+            <div class="d-flex align-items-center justify-content-start mb-3 position-relative">
+              <h1 class="contact_name m-0 ms-2">No Instructors Found</h1>
+            </div>
+          </ng-container>
+        </div>
+      </ion-accordion> -->
+    </ion-accordion-group>
+    <!-- <ion-accordion-group>
+      <ion-accordion class="acc_main_index" value="first" toggleIcon="">
+        <ion-item lines="none" class="acc_header_index" slot="header" (click)="toggleAccordion(2)">
+          <ion-icon slot="start" color="primary" class="p-0 m-0" [name]="isExpanded2 ? 'chevron-up' : 'chevron-forward'"
+            [style.transform]="isExpanded2 ? 'rotate(180deg)' : 'rotate(0deg)'"></ion-icon>
+          <ion-label class="acc_label">Group (0)</ion-label>
+        </ion-item>
+        <div class="ion-padding col-12" slot="content"></div>
+      </ion-accordion>
+    </ion-accordion-group> -->
+  </div>
+</ion-content>
+<!-- <app-footer></app-footer> -->

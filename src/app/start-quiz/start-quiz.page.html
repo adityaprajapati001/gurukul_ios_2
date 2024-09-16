@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="title">Start Attempt</ion-title>
+    <ion-icon (click)="onClose()"
+      class="p-2"
+      slot="end"
+      color="medium"
+      size="large"
+      name="close-sharp"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main h-100 position-relative">
+    <div class="p-3">
+      <h1 class="content_title">Time Limit</h1>
+      <p class="content_p">
+        Your Attempt will have a time limit of 10 mins. when you start, the
+        timer will begin to count down and cannot be pause. You must finish your
+        attempt before it expires. Are you sure you wish to start Now ?
+      </p>
+    </div>
+    
+    <div class="p-3 position-absolute w-100 bottom-0">
+      <ion-button (click)="onStart()"
+        class="start_btn"
+        expand="block"
+        color="success"
+        ><span class="start_span">Start Attempt</span></ion-button
+      >
+    </div>
+  </div>
+</ion-content>

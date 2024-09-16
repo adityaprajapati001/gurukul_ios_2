@@ -1,0 +1,164 @@
+.top {
+  background-color: #fff;
+  background-image: url(../../assets/img/footer_img.png);
+  background-position: center bottom;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.main {
+  background-color: #3553a1;
+}
+
+.rectangle {
+  border: 1px solid;
+}
+
+.header {
+  padding: 4vw;
+}
+
+.container {
+  border-radius: 5vw 5vw 0 0;
+  background-color: #fff;
+}
+
+.container_sub {
+  padding: 3vw;
+}
+
+.form {
+  border-radius: 2vw;
+  background-color: #fff;
+  box-shadow: 0 2vw 4vw 0 rgba(0, 0, 0, 0.2), 0 3vw 10vw 0 rgba(0, 0, 0, 0.19);
+}
+
+.heading {
+  background-color: #3553a1;
+  color: white;
+  border-radius: 1vw;
+  padding: 1vw 2vw;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 3vw;
+  text-align: center;
+}
+
+.form_main {
+  padding: 1vw;
+}
+
+.form_label {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 3vw;
+  color: #000000;
+}
+
+.note {
+  color: #319860;
+  font-size: 1.5vw;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.form-control {
+  padding: 0;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 3vw;
+  color: #9b9b9b;
+}
+
+.hr {
+  border: 0.2vw solid #d9d9d9; 
+  margin: 0;
+  height: 0;
+}
+
+input:focus {
+  box-shadow: none;
+}
+
+.btn_login {
+  --border-radius: 1vw;
+}
+
+.span_login {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 3vw;
+  text-transform: capitalize;
+}
+
+.footer_img {
+  width: 100%;
+  height: auto;
+}
+
+/* Media queries for responsiveness */
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 12vw;
+  }
+
+  .container_sub {
+    padding: 6vw;
+  }
+
+  .form_main {
+    padding: 4vw;
+  }
+}
+
+/* Media queries for further responsiveness */
+@media screen and (max-height: 600px) {
+  /* Adjustments for shorter screens */
+  .header {
+    padding: 8vw;
+  }
+
+  .container_sub {
+    padding: 3vw;
+  }
+
+  .form_main {
+    padding: 1vw;
+  }
+}
+
+/* Adjustments for smaller devices */
+@media screen and (max-width: 480px) {
+  .heading {
+    font-size: 2.5vw;
+  }
+
+  .fgt_pwd {
+    font-size: 2.5vw;
+  }
+
+  .form_label {
+    font-size: 2.5vw;
+  }
+
+  .form-control {
+    font-size: 2.5vw;
+  }
+
+  .span_login {
+    font-size: 2.5vw;
+  }
+
+  .icon {
+    height: 2.5vw;
+    width: 2.5vw;
+  }
+
+  .footer_img {
+    width: 100%;
+    height: auto;
+  }
+}

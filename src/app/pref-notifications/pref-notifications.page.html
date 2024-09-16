@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button defaultHref="" slot="start" color="primary"></ion-back-button>
+    <ion-title class="title">Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main ion-padding">
+    <div class="card mb-3">
+      <ion-item class="toggle_item p-0" lines="none">
+        <ion-toggle color="success" class="toggle" [(ngModel)]="allowNotif" (ionChange)="toggleChanged()">Allow Notification</ion-toggle>
+      </ion-item>
+    </div>
+    <div class="card mb-3">
+      <ion-item class="select_item p-0" lines="none">
+        <ion-select justify="space-between" interface="popover" label="Type of Notification" placeholder="">
+          <ion-select-option class="select_opt" value="mobile">Mobile</ion-select-option>
+          <ion-select-option class="select_opt" value="web">Web</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

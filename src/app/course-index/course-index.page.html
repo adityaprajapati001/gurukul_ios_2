@@ -1,0 +1,180 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="">
+    <ion-title>Course Index</ion-title>
+    <ion-icon class="p-1" slot="end" size="large" (click)="onClose()" name="close-sharp"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main">
+    <div class="main_sub">
+      <h1 class="main_title">All Sections</h1>
+    </div>
+    <div class="content_head mb-3">
+      <div *ngFor="let item of courseData; let i = index">
+        <ion-text class="content_title" *ngIf="i==0" [innerHTML]="item.name"></ion-text>
+      </div>
+    </div>
+    <div class="col-12" *ngFor="let item of courseData; let i = index">
+      <!-- <span  *ngIf="item.modname == 'label'"> -->
+      <ion-accordion-group *ngIf="i>=1">
+        <ion-accordion class="acc_main_index" value="first" toggleIcon="">
+          <ion-item lines="none" class="acc_header_index" slot="header" (click)="toggleAccordion(i)">
+            <ion-icon slot="start" color="primary" class="p-0 m-0"
+              [name]="isExpanded[i] ? 'chevron-up' : 'chevron-forward'"
+              [style.transform]="isExpanded[i] ? 'rotate(180deg)' : 'rotate(0deg)'"></ion-icon>
+            <ion-label class="acc_label" [innerHTML]="item.name"></ion-label>
+          </ion-item>
+          <div class="col-12 d-flex justify-content-evenly pt-0" slot="content"
+            *ngFor="let val of item.modules">
+              <p slot="start"  *ngIf="val.modname == 'label'" [innerHTML]="val.name"></p>
+              <ion-img *ngIf="val.modname != 'label'" src="assets/img/dot.png" alt=""></ion-img>
+              <ion-item lines="none" *ngIf="val.modname != 'label'" class="col-10 d-flex align-items-center justify-content-between" (click)="onClick(val)">
+                <p class="content_p" [innerHTML]="val.name"></p>
+                <ion-icon class="acc_icon" slot="end" color="primary" name="chevron-forward-sharp"></ion-icon>
+              </ion-item>
+          </div>
+          <!-- <div class="ion-padding col-12 d-flex align-items-center justify-content-evenly" slot="content">
+            <ion-img src="assets/img/dot.png" alt=""></ion-img>
+            <div class="col-10 d-flex align-items-center justify-content-between">
+              <p class="content_p">
+                Quiz on Password Security
+              </p>
+              <ion-icon class="acc_icon" slot="end" color="primary" name="chevron-forward-sharp"></ion-icon>
+            </div>
+          </div> -->
+        </ion-accordion>
+      </ion-accordion-group>
+    <!-- </span> -->
+
+   
+      <!-- <ion-accordion-group>
+        <ion-accordion
+          class="acc_main_index"
+          value="first"
+          toggleIcon=""
+        >
+          <ion-item lines="none" class="acc_header_index" slot="header" (click)="toggleAccordion(2)"
+          >
+            <ion-icon
+              slot="start"
+              color="primary"
+              class="p-0 m-0"
+              [name]="isExpanded2 ? 'chevron-up' : 'chevron-forward'"
+              [style.transform]="isExpanded2 ? 'rotate(180deg)' : 'rotate(0deg)'"
+            ></ion-icon>
+            <ion-label class="acc_label">Module 1 : Spot the Phis (For Desktop/lap.</ion-label>
+          </ion-item>
+          <div
+            class="ion-padding col-12 d-flex align-items-center justify-content-evenly"
+            slot="content"
+          >
+            <ion-img src="assets/img/dot.png" alt=""></ion-img>
+            <div
+              class="col-10 d-flex align-items-center justify-content-between"
+            >
+              <p class="content_p">Click here for Spot the Phis Training</p>
+              <ion-icon
+                class="acc_icon"
+                slot="end"
+                color="primary"
+                name="chevron-forward-sharp"
+              ></ion-icon>
+            </div>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+      <ion-accordion-group>
+        <ion-accordion
+          class="acc_main_index"
+          value="first"
+          toggleIcon=""
+        >
+          <ion-item lines="none" class="acc_header_index" slot="header" (click)="toggleAccordion(3)"
+          >
+            <ion-icon
+              slot="start"
+              color="primary"
+              class="p-0 m-0"
+              [name]="isExpanded3 ? 'chevron-up' : 'chevron-forward'"
+              [style.transform]="isExpanded3 ? 'rotate(180deg)' : 'rotate(0deg)'"
+            ></ion-icon>
+            <ion-label class="acc_label">Module 1 : Spot the Phis (Lite Version for...</ion-label>
+          </ion-item>
+          <div
+            class="ion-padding col-12 d-flex align-items-center justify-content-evenly"
+            slot="content"
+          >
+            <ion-img src="assets/img/dot.png" alt=""></ion-img>
+            <div
+              class="col-10 d-flex align-items-center justify-content-between"
+            >
+              <p class="content_p">Click here for to read Spot the Phis Content</p>
+              <ion-icon (click)="onClick()"
+                class="acc_icon"
+                slot="end"
+                color="primary"
+                name="chevron-forward-sharp"
+              ></ion-icon>
+            </div>
+          </div>
+          <div
+            class="ion-padding col-12 d-flex align-items-center justify-content-evenly"
+            slot="content"
+          >
+            <ion-img src="assets/img/dot.png" alt=""></ion-img>
+            <div
+              class="col-10 d-flex align-items-center justify-content-between"
+            >
+              <p class="content_p">
+                Quiz on Spot The Phis
+              </p>
+              <ion-icon (click)="onQuiz()"
+                class="acc_icon"
+                slot="end"
+                color="primary"
+                name="chevron-forward-sharp"
+              ></ion-icon>
+            </div>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+      <ion-accordion-group>
+        <ion-accordion
+          class="acc_main_index"
+          value="first"
+          toggleIcon=""
+        >
+          <ion-item lines="none" class="acc_header_index" slot="header" (click)="toggleAccordion(4)"
+          >
+            <ion-icon
+              slot="start"
+              color="primary"
+              class="p-0 m-0"
+              [name]="isExpanded4 ? 'chevron-up' : 'chevron-forward'"
+              [style.transform]="isExpanded4 ? 'rotate(180deg)' : 'rotate(0deg)'"
+            ></ion-icon>
+            <ion-label class="acc_label">Module 2 : Information Security</ion-label>
+          </ion-item>
+          <div
+            class="ion-padding col-12 d-flex align-items-center justify-content-evenly"
+            slot="content"
+          >
+            <ion-img src="assets/img/dot.png" alt=""></ion-img>
+            <div
+              class="col-10 d-flex align-items-center justify-content-between"
+            >
+              <p class="content_p">Information Security Awareness</p>
+              <ion-icon
+                class="acc_icon"
+                slot="end"
+                color="primary"
+                name="chevron-forward-sharp"
+              ></ion-icon>
+            </div>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group> -->
+    </div>
+  </div>
+</ion-content>

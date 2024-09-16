@@ -1,0 +1,148 @@
+.content_p {
+  margin: 0;
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+.content_head {
+  background: #f8f8f8;
+  padding: 15px;
+}
+.card_badge {
+  border-radius: 20px;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box {
+  border: 1px solid #000;
+}
+.body {
+  // color: #000;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 29px;
+  font-style: normal;
+  font-weight: 500;
+}
+.act_btn {
+  --border: none;
+  --border-radius: none;
+  --background: none;
+  // --color: #000;
+  --box-shadow: none;
+  --font-family: "Inter", sans-serif;
+  --font-size: 15px;
+  --font-style: normal;
+  --font-weight: 500;
+}
+.box_next {
+  border-radius: 9px;
+  border: 0.3px solid #dadada;
+  background: #f8f8f8;
+}
+.body_next {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+.attempt {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+}
+.pop_head {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+}
+.pop_body {
+  color: #319860;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+// side menu
+.menu_header {
+  box-shadow: none;
+}
+.main_span {
+  color: #565656;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+}
+.menu_content {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+}
+.menu_hr {
+  border: 0.5px solid #7b7b7b;
+  background-color: #7b7b7b;
+}
+.course_span {
+  // color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+}
+.menu_footer {
+  box-shadow: none;
+  padding: 8px;
+}
+.ref_btn {
+  color: #fff;
+  font-family: "Inter",sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+}
+.overflow-x {
+  width: 100%;
+  overflow-x: auto;
+}
+iframe {
+  width: 100%;
+  height: 400px;
+  border: 2px solid #cccccc;
+  padding: 10px;
+  border-radius: 6px;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#iframeContainer {
+  max-height: 300px; /* Adjust this as needed */
+  overflow: auto;
+  border: 1px solid #ccc; /* Optional: for visual clarity */
+}
+iframe { pointer-events: none!important; }
+
+div {
+  overflow: scroll!important;
+}
+
+iframe a {
+  pointer-events: auto!important;
+}
+iframe a:hover {
+  pointer-events: auto!important;
+}

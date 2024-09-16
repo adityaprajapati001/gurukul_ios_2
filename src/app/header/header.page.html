@@ -1,0 +1,149 @@
+<!-- Profile Menu Start -->
+<ion-menu side="end" contentId="main-content" menuId="menuProfile">
+  <ion-header>
+    <ion-toolbar>
+      <ion-item lines="none">
+      <ion-label slot="start" class="profile_heading ps-3">User Account</ion-label>
+      <ion-icon class="p-1" slot="end" size="large" name="close-sharp" (click)="onClose()"></ion-icon>
+    </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <!-- <div class="col-12 text-center ion-padding">
+      <h1 class="profle_title">GURUKUL</h1> -->
+      <!-- <div class="d-flex justify-content-center mb-3">
+        <a (click)="openCapacitorSite()" class="profile_link">https://uat-gurukul.skfin.in</a>
+      </div> -->
+    <!-- </div>
+    <hr class="profile_hr" /> -->
+    <!-- <ng-container *ngIf="userData">
+      <div class="d-flex align-items-center justify-content-between ion-padding" *ngFor="let item of userData; let i = index">
+        <div class="d-flex align-items-center">
+          <ion-img [src]="item.profileimageurl" class="img-fluid rounded-start profile_img" alt=""></ion-img>
+          <p class="profile_name m-1">{{item.fullname}}</p>
+        </div>
+      </div>
+    </ng-container> -->
+    <ng-container>
+      
+      <!-- <div class="d-flex align-items-center justify-content-between ion-padding" *ngFor="let item of userData; let i = index">
+        <div class="d-flex align-items-center" (click)="onClickUser()">
+          <ion-img [src]="item.profileimageurl" class="img-fluid rounded-start profile_img" alt=""></ion-img>
+          <p class="profile_name m-1">{{item.fullname}}</p>
+        </div>
+      </div> -->
+
+      <!-- <div> -->
+        <ion-content padding>
+          <div class="profile-container" *ngIf="userDataProfile">
+            <!-- Profile Header -->
+            <ion-item class="profile-header border p-1" line="none">
+              <ion-img [src]="userImg ? userImg : 'assets/img/user.png'" class="img-fluid rounded-start profile-Img-side" alt=""></ion-img>
+              <p class="profile_name m-1 p-2"><strong>{{userDataProfile[0].fullname}}</strong></p>
+            </ion-item>
+        
+            <!-- User Information List -->
+            <ion-list>
+              <ion-item>
+               
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-label>{{ userDataProfile[0].username }} </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="mail" slot="start"></ion-icon>
+                <ion-label>{{ userDataProfile[0].email }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="call" slot="start"></ion-icon>
+                <ion-label>{{ userDataProfile[0].phone1 }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="location" slot="start"></ion-icon>
+                <ion-label>
+                  <p>SK Finance Ltd. 
+                  Adarsh Plaza,
+                  Khasa Kothi Circle,
+                  Jaipur-302001,
+                  Rajasthan,
+                  Ph: 01414161641
+                </ion-label>
+              </ion-item>
+            </ion-list>
+        
+            <!-- New Address Section -->
+            <ion-list class="">
+              <!-- Reach out to us Section -->
+              <ion-item >
+                <ion-label class="text-center">
+                  <strong >Reach out to us:</strong>
+                </ion-label>
+              </ion-item>
+              <ion-item class="text-center" lines="none">
+                <ion-row class="row">
+                 <ion-col size="4" class="col-3"></ion-col>
+                  <ion-col size="2" class="col-3" class="ion-text-center flex-end">
+                    <a href="mailto:learning@skfin.in">
+                      <ion-icon size="large" name="mail" color="primary"></ion-icon>
+                    </a>
+                  </ion-col>
+                  <ion-col size="4" class="col-3"></ion-col>
+                  <ion-col size="2" class="col-3 ion-text-center flex-start">
+                    <a href="tel:01414161641">
+                      <ion-icon size="large" name="call" color="success"></ion-icon>
+                    </a>
+                  </ion-col>
+                 
+                </ion-row>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-content>
+      <!-- </div> -->
+    </ng-container>
+    <!-- <hr class="profile_hr" />
+    <div class="d-flex align-items-center justify-content-between ion-padding" (click)="onGrades()">
+      <div class="d-flex align-items-center">
+        <ion-img src="assets/img/result.png"></ion-img>
+        <p class="profile_grades m-2">Grades</p>
+      </div>
+      <ion-icon slot="end" color="primary" size="large" name="chevron-forward-sharp"></ion-icon>
+    </div>
+    <div (click)="onBadges()" class="d-flex align-items-center justify-content-between ion-padding pt-0">
+      <div class="d-flex align-items-center">
+        <ion-img class="p-1" src="assets/icon/trophy.svg"></ion-img>
+        <p class="profile_grades m-2">Badges</p>
+      </div>
+      <ion-icon slot="end" color="primary" size="large" name="chevron-forward-sharp"></ion-icon>
+    </div>
+    <hr class="profile_hr" /> -->
+    <!-- <div class="d-flex align-items-center justify-content-between ion-padding">
+      <div class="d-flex align-items-center">
+        <ion-icon class="setting_icon p-1" name="settings-outline"></ion-icon>
+        <p class="profile_grades m-1">Prefrences</p>
+      </div>
+      <ion-icon
+        (click)="onPreferences()"
+        slot="end"
+        color="primary"
+        size="large"
+        name="chevron-forward-sharp"
+      ></ion-icon>
+    </div> -->
+  </ion-content>
+  <ion-footer [translucent]="true" class="ion-padding">
+    <ion-toolbar>
+      <ion-button expand="block" color="danger" class="logout_btn" (click)="onLogout()"><ion-icon
+          name="power-sharp"></ion-icon><span class="logout_span p-1">Logout</span></ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>
+<!-- Profile Menu End -->
+<ion-header [translucent]="true" class="mb-2">
+  <ion-toolbar>
+    <ion-item lines="none" class="p-0 m-0">
+      <ion-img slot="start" class="profile_img m-2" src="assets/img/Logo 3x.jpg"></ion-img>
+      <ion-label slot="start" class="header">GURUKUL</ion-label>
+      <ion-img slot="end" class="profile_img" [src]="profileImg ? profileImg : 'assets/img/user.png'" (click)="onProfile()"></ion-img>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>

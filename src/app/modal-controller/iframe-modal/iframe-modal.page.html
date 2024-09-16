@@ -1,0 +1,60 @@
+<ion-toolbar>
+  <ion-title>Content</ion-title>
+  <ion-buttons slot="end">
+    <ion-icon name="close-sharp" size="large" (click)="dismiss()">Close</ion-icon>
+  </ion-buttons>
+</ion-toolbar>
+
+
+<ion-content>
+
+<!-- <iframe
+  src="../../../assets/phishing/launcher.html"
+  width="100%"
+  height="100%"
+  frameborder="0"
+  style="border: none;"
+></iframe> -->
+
+<iframe
+[src]="iframeSrc"
+  width="100%"
+  height="100%"
+  frameborder="0"
+  style="border: none;"
+>
+</iframe>
+
+<section id="option-pane" *ngIf="resumer" class="option-pane" style="position: absolute; left: 0px; top: 0px; overflow: visible; transform-origin: center center; z-index: 10; width: 430px; height: 135px; transform: translate(0px, 565px) scale(1);">
+  <ion-button (click)="sendScormData()" [disabled]="!resumer">Submit</ion-button>
+</section>
+
+<div *ngIf="decodedHtmlValue">
+  <h2>Decoded HTML Value:</h2>
+  <div [innerHTML]="decodedHtmlValue"></div>
+</div>
+
+<div *ngIf="updateScore">
+  <h2>Decoded HTML2 Value:</h2>
+  <div [innerHTML]="updateScore"></div>
+</div>
+
+<div *ngIf="tValue">
+  <h2>T Value:</h2>
+  <div>{{ tValue }}</div>
+</div>
+
+<div *ngIf="resumer">
+  <h2>resumer Value:</h2>
+  <div>{{ resumer }}</div>
+</div>
+
+<!-- <div class="iframe-container">
+   <div class="iframe-content">
+    <iframe [src]="iframeSrc" frameborder="0" width="100%" height="100%"></iframe>
+
+</div>
+</div> -->
+
+
+</ion-content>

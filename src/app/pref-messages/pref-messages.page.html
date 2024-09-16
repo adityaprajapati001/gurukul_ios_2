@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button defaultHref="" color="primary" slot="start"></ion-back-button>
+    <ion-title class="title">Messages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="card mb-3">
+    <div class="col-12 ion-padding">
+      <h1 class="general">General</h1>
+        <ion-item class="toggle_item p-0" lines="none">
+          <ion-toggle color="primary" class="toggle" [(ngModel)]="toggleValue" (ionChange)="toggleChanged()">Use Enter to send</ion-toggle>
+        </ion-item>
+    </div>
+  </div>
+</ion-content>

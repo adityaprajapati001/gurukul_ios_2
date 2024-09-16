@@ -1,0 +1,76 @@
+<div class="ion-page">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-back-button color="primary" slot="start" defaultHref=""></ion-back-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true" color="light">
+    <form [formGroup]="formData" (ngSubmit)="onSubmit('submit')">
+      <ng-container *ngFor="let feedback of feedbacks">
+        <ion-list *ngIf="feedback.typ != 'textarea'" [inset]="true">
+          <ng-container *ngIf="feedback.typ == 'label'">
+            <ion-item>
+              <ion-title [innerHTML]="feedback.presentation"></ion-title>
+            </ion-item>
+          </ng-container>
+  
+          <ng-container *ngIf="feedback.typ == 'multichoice'">
+            <ion-item lines="none">
+              <ion-label>{{feedback.name}}</ion-label>
+            </ion-item>
+            <ng-container *ngIf="feedback.presentation.length>4">
+              <ion-item>
+                <ion-select [formControlName]="feedback.id" [label]="'Select'">
+                  <ion-select-option *ngFor="let presentation of feedback.presentation" [value]="presentation.value">{{presentation.label}}</ion-select-option>
+                </ion-select>
+                <!-- <div *ngIf="formData.get(feedback.id)?.errors?.['required'] && formData.get(feedback.id)?.touched">
+                  <ion-text color="danger">This field is required.</ion-text>
+                </div> -->
+              </ion-item>
+            </ng-container>
+            
+
+            <ng-container *ngIf="feedback.presentation.length == 4">
+              <ion-item>
+                <ion-radio-group [formControlName]="feedback.id">
+                  <ng-container *ngFor="let presentation of feedback.presentation">
+                      <ion-radio labelPlacement="end" justify="start" [value]="presentation.value">{{presentation.label}}</ion-radio>
+                  </ng-container>
+                </ion-radio-group>
+                <!-- <div *ngIf="formData.get(feedback.id)?.errors?.['required'] && formData.get(feedback.id)?.touched">
+                  <ion-text color="danger">This field is required.</ion-text>
+                </div> -->
+              </ion-item>
+            </ng-container>
+
+          </ng-container>
+       
+        </ion-list>
+  
+        <ion-list [inset]="true" *ngIf="feedback.typ == 'textarea'">
+          <ion-item lines="none">
+            {{feedback.name}}
+          </ion-item>
+          <ion-item>
+            <ion-textarea [formControlName]="feedback.id" rows="5"></ion-textarea>
+          </ion-item>
+          <!-- <div *ngIf="formData.get(feedback.id)?.errors?.['required'] && formData.get(feedback.id)?.touched">
+            <ion-text color="danger">This field is required.</ion-text>
+          </div> -->
+        </ion-list>
+      </ng-container>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="block" size="default" type="submit" >
+              Submit
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+    </form>
+  </ion-content>
+</div>

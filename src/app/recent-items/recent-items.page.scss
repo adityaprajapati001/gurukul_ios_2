@@ -1,0 +1,14 @@
+ion-button[slot="fixed"] {
+    top: 50%;
+    right: 0;
+}
+
+.arrow_btn {
+    width: 40px;
+    --background: none;
+    --box-shadow: none;
+    --padding-bottom: none;
+    --padding-end: none;
+    --padding-start: none;
+    --padding-top: none;
+}

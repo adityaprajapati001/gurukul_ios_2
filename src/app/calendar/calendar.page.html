@@ -1,0 +1,122 @@
+<ion-menu side="end" contentId="main-content" menuId="menu-calendar">
+  <ion-content class="ion-padding">
+    <div class="col-12 text-center" *ngIf="!recentData">
+      <h1 class="menu_heading mb-3">Recently Accessed Items</h1>
+      <div class="d-flex justify-content-center mb-3">
+        <ion-img src="assets/img/recent_access.png"></ion-img>
+      </div>
+      <p class="menu_body">No Recent Items</p>
+    </div>
+    <div class="col-12">
+      <h1 class="menu_heading mb-3 text-center">Recently Accessed Items</h1>
+      <ion-card class="card" *ngFor="let item of recentData; let i = index;" (click)="onRecentCardClick(item)">
+        <ion-card-content class="m-0 p-0">
+          <ion-list lines="none" class="m-0 p-0">
+            <ion-item class="m-0 p-0">
+              <ion-thumbnail slot="start" class="img-fluid rounded-start">
+                <img [src]="(item.icon | srcExtractor) ? (item.icon | srcExtractor) : 'assets/img/images.png'"
+                 alt="Image"/>
+              </ion-thumbnail>
+              <ion-list class="col-12">
+                <ion-label class="mb-2 card_displayname"> {{ item.coursename | replaceAmp }}</ion-label>
+                <ion-label class="card_text_badge mb-2">
+                  Course
+                </ion-label>
+                <!-- <div class="col-12 mb-1 bar_main">
+                  <div class="progress_bar_container col-10">
+                    <div class="progress_bar" [style.width]="item.progress + '%'"></div>
+                  </div>
+                  <div class="percentage_display col-2">
+                    {{ item.progress | number:'1.0-2' }}%
+                  </div>
+                </div> -->
+              </ion-list>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
+</ion-menu>
+
+<app-header [profileImg]="userImg"></app-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <!-- <ion-button class="arrow_btn" slot="fixed" (click)="onArrow()">
+    <ion-img src="assets/img/sideArrow.png" alt=""></ion-img>
+  </ion-button> -->
+  <div class="col-12">
+    <div class="calendar col-12 d-flex align-items-center justify-content-center">
+      <!-- <ion-datetime presentation="date" [highlightedDates]="highlightedDates" display-format="DD-MM-YYYY" (ionChange)="onChange($event)"></ion-datetime> -->
+        <ng-container *ngIf="isDataLoaded">
+          <ion-datetime presentation="date" [value]="selectedDate" [highlightedDates]="highlightedDates" (ionChange)="onChange($event)"></ion-datetime>
+        </ng-container>
+        <ng-container *ngIf="!isDataLoaded">
+          <ion-datetime presentation="date" [value]="selectedDate" [highlightedDates]="highlightedDates" (ionChange)="onChange($event)"></ion-datetime>
+        </ng-container>
+    </div>
+    <hr class="calendar_hr" />
+    <div class="ion-padding">
+      <div class="mb-3">
+        <div class="col-12 d-flex justify-content-between align-items-center sub mt-2">
+          <div class="icons_sub">
+            <ion-img src="assets/img/note.png" alt=""></ion-img>
+            <p class="header_sub">TO DO</p>
+          </div>
+          <p class="header_sub">
+            {{ cardDate }}
+          </p>
+        </div>
+        <ion-list lines="none" *ngIf="calendarData && calendarData.length > 0">
+          <ion-item *ngFor="let week of calendarData">
+            <ion-grid>
+              <ion-row>
+                <ion-col *ngFor="let day of week">
+                  <ng-container *ngIf="day.hasevents">
+                    <ion-card-header>
+                      <ion-card-title>{{ day.daytitle }}</ion-card-title>
+                    </ion-card-header>
+                    <ion-card class="card mb-2" *ngFor="let event of day.events">
+                      <ion-card-content class="m-0 p-0">
+                        <ion-list lines="none">
+                          <ion-item>
+                            <ion-label *ngIf="event.name"><b [innerHTML]="event.name"></b></ion-label>
+                            <ion-icon *ngIf="event.location" color="primary" slot="end" name="chevron-forward-sharp" (click)="onLink(event.location)"></ion-icon>
+                            <!-- <ion-label><a (click)="onLink(event.location)" class="profile_link"></a></ion-label> -->
+                          </ion-item>
+                          <ion-item *ngIf="event.normalisedeventtypetext">
+                            <ion-label>{{ event.normalisedeventtypetext }}</ion-label>
+                          </ion-item>
+                          <ion-item *ngIf="event.description">
+                            <ion-label [innerHTML]="event.description"></ion-label>
+                          </ion-item>
+                          <ion-item *ngIf="event?.course">
+                            <ion-text color="primary" [innerHTML]="event?.course?.fullname" (click)="onCourseClick(event?.course)">
+                            </ion-text>
+                          </ion-item>
+                          <ion-item *ngIf="event?.action">
+                            <ion-text color="primary" [innerHTML]="event?.action?.name" (click)="onActionClick(event?.action)">
+                            </ion-text>
+                          </ion-item>
+                          <!-- <ion-item *ngIf="event.location">
+                            <ion-label><a (click)="onLink(event.location)" class="profile_link">{{ event.location
+                                }}</a></ion-label>
+                          </ion-item> -->
+                        </ion-list>
+                      </ion-card-content>
+                    </ion-card>
+                  </ng-container>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+        <ion-note *ngIf="!calendarData || calendarData.length === 0">No calendar data available</ion-note>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- <app-footer></app-footer> -->
+
+<!-- <ion-label *ngIf="(event.timestart | date:'dd-MMM-yyyy') === selectedDate">{{ event.name }}</ion-label> -->
+

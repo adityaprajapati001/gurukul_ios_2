@@ -1,0 +1,561 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button color="primary" slot="start" defaultHref=""></ion-back-button>
+    <div class="d-flex align-items-center justify-content-end">
+      <!-- <ion-img class="p-2" slot="end" src="assets/icon/download.svg"></ion-img> -->
+      <!-- <ion-img
+        class="p-2"
+        slot="end"
+        src="assets/icon/info.svg"
+        (click)="onIndex()"
+      ></ion-img> -->
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- <app-custom-loading></app-custom-loading> -->
+
+
+<!-- <div *ngIf="content" [innerHTML]="content"></div>
+<div *ngIf="!content">Loading SCORM content...</div> -->
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <div class="position-relative h-100 overflow-auto">
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="segment === 'course'">
+      <ion-fab-button>
+        <ion-img style="z-index: 1;" src="assets/icon/menu_btn.svg" (click)="onIndex()" alt=""></ion-img>
+      </ion-fab-button>
+    </ion-fab>
+    <!-- <div class="col-12 body_sub" *ngIf="segment === 'course'">
+      <div class="d-flex justify-content-end mb-3">
+        <ion-img style="z-index: 1;" src="assets/icon/menu_btn.svg" (click)="onIndex()" alt=""></ion-img>
+      </div>
+    </div> -->
+    <div class="main">
+      <div class="col-12 card_main">
+        <div>
+          <ion-img *ngIf="data.overviewfiles"
+            [src]="(utility.getImageUrl(data.overviewfiles) ? utility.getImageUrl(data.overviewfiles) : 'assets/img/cyber.png')"
+            class="img-fluid" alt=""></ion-img>
+            <span *ngIf="data.courseimage">
+          <ion-img *ngIf="data.courseimage" [src]="data.courseimage ? data.courseimage : 'assets/img/images.png'"
+            class="img-fluid" alt="Image"></ion-img>
+          </span>
+        </div>
+        <div class="col-10 card_sub">
+          <div class="card_body p-0">
+            <div class="col-12 card_body_sub">
+              <h5 class="card_title">{{data.fullname | replaceAmp}}</h5>
+            </div>
+            <div class="col-12 bar_main">
+              <div class="progress_bar_container col-10">
+                <div class="progress_bar" [style.width]="data.progress + '%'"></div>
+              </div>
+              <div class="percentage_display col-2">{{ data.progress | number:'1.0-2' }}%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-segment class="segment" [scrollable]="true" (ionChange)="segmentChanged($event)" value="course">
+        <ion-segment-button color="primary" value="course">
+          <ion-text class="segment_title">Course</ion-text>
+        </ion-segment-button>
+        <!-- <ion-segment-button color="primary" value="participants">
+          <ion-text class="segment_title">Participants</ion-text>
+        </ion-segment-button> -->
+        <ion-segment-button color="primary" value="grades">
+          <ion-text class="segment_title">Grades</ion-text>
+        </ion-segment-button>
+        <!-- <ion-segment-button color="primary" value="competencies">
+          <ion-text class="segment_title">Competencies</ion-text>
+        </ion-segment-button> -->
+      </ion-segment>
+      <div class="col-12 body_main" *ngIf="segment === 'course'">
+        <div *ngIf="showMain">
+          <div *ngFor="let item of courseData;let i=index">
+            <h1 class="body_title" *ngIf="i<1">
+              {{item.name | replaceAmp}}
+            </h1>
+            <span *ngIf="item.summary">
+            <ion-img *ngIf="i<1" [src]="extractImageUrl(item.summary) + '?token=' + utility.getToken()"></ion-img>
+          </span>
+            <!-- <ion-img src="assets/img/cyber_img.png"></ion-img> -->
+          </div>
+        </div>
+        <div *ngIf="showPwdSec">
+          <div *ngFor="let item of courseData; let i = index">
+            <h1 class="body_title" *ngIf="i==1">{{item.name | replaceAmp}}</h1>
+            <div class="col-12" *ngIf="i==1">
+             
+              <!-- <div class="card mb-3" *ngFor="let val of item.modules; let j = index">
+                <div class="col-12 card_main" (click)="onClick(val)">
+                  <div>
+                    <ion-img src={{val.modicon}} class="img-fluid rounded-start" alt=""></ion-img>
+                  </div>
+                  <div class="col-10 card_sub">
+                    <div class="card_body p-0">
+                      <div class="col-12 card_body_sub">
+                        <ion-text class="content_p">{{val.name | replaceAmp}}</ion-text>
+                      </div>
+                      <p class="card_text">
+                        <ion-badge color="primary" (click)="presentPopover($event, i, j)" class="col-2 card_badge">To
+                          do&nbsp;<ion-icon name="caret-down-sharp"></ion-icon></ion-badge>
+                        <ion-popover #popover [isOpen]="isPopoverOpen(i, j)" (didDismiss)="isOpen = false">
+                          <ng-template>
+                            <ion-content>
+                              <ion-list class="p-0 m-0">
+                                <ion-item lines="none">
+                                  <div>
+                                    <h1 class="pop_head m-0 p-0">You Must</h1>
+                                    <p class="pop_body m-0 p-0">Received a Grade</p>
+                                  </div>
+                                </ion-item>
+                              </ion-list>
+                            </ion-content>
+                          </ng-template>
+                        </ion-popover>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <ion-list *ngFor="let val of item.modules; let j = index" >
+                <span *ngIf="val.modname == 'label'" [innerHTML]="val.description"></span>
+                <ion-card class="card" *ngIf="val.modname != 'label'">
+                  <!-- <ion-card-content class="m-0 p-0" (click)="onClick(val)"> -->
+                  <ion-card-content class="m-0 p-0" (click)="onClick(val)">
+                    <ion-list lines="none" class="m-0 p-0">
+                      <ion-item class="m-0 p-0">
+                        <ion-thumbnail slot="start" class="img-fluid rounded-start">
+                          <img src={{val.modicon}} alt=""/>
+                        </ion-thumbnail>
+                        <ion-list class="col-12">
+                          <ion-label class="content_p">{{val.name | replaceAmp}}</ion-label>
+                          <p class="card_text">
+                            <ion-badge color="primary" (click)="presentPopover($event, i, j)" class="col-2 card_badge">To
+                              do&nbsp;<ion-icon name="caret-down-sharp"></ion-icon></ion-badge>
+                            <ion-popover #popover [isOpen]="isPopoverOpen(i, j)" (didDismiss)="isOpen = false">
+                              <ng-template>
+                                <ion-content>
+                                  <ion-list class="p-0 m-0">
+                                    <ion-item lines="none">
+                                      <div>
+                                        <h1 class="pop_head m-0 p-0">You Must</h1>
+                                        <p class="pop_body m-0 p-0">Received a Grade</p>
+                                      </div>
+                                    </ion-item>
+                                  </ion-list>
+                                </ion-content>
+                              </ng-template>
+                            </ion-popover>
+                          </p>
+                        </ion-list>
+                      </ion-item>
+                    </ion-list>
+                  </ion-card-content>
+                </ion-card>
+              </ion-list>
+            </div>
+          </div>
+        </div>
+
+        <!-- <p>{{courseData}}</p>
+        <div [innerHTML]="courseData"></div> -->
+        <div *ngIf="showDesktop">
+          <div *ngFor="let item of courseData; let i = index">
+            <h1 class="body_title" *ngIf="i==2">{{item.name | replaceAmp}}</h1>
+            <div class="col-12" *ngIf="i==2">
+              <ion-card class="card" *ngFor="let val of item.modules; let j = index" >
+                
+                <ion-progress-bar *ngIf="progress >= 0" [value]="progress"></ion-progress-bar>
+                <ion-card-content class="m-0 p-0" (click)="onClick(val)">
+                  <ion-list lines="none" class="m-0 p-0">
+                    <ion-item class="m-0 p-0">
+                      <ion-thumbnail slot="start" class="img-fluid rounded-start">
+                        <img src={{val.modicon}}  alt=""/>
+                      </ion-thumbnail>
+                      <ion-list class="col-12">
+                        <ion-label class="content_p">{{val.name | replaceAmp}}</ion-label>
+                        <p class="card_text">
+                          <ion-badge color="primary" (click)="presentPopover($event, i, j)" class="col-2 card_badge">To
+                            do&nbsp;<ion-icon name="caret-down-sharp"></ion-icon></ion-badge>
+                          <ion-popover #popover [isOpen]="isPopoverOpen(i, j)" (didDismiss)="isOpen = false">
+                            <ng-template>
+                              <ion-content>
+                                <ion-list class="p-0 m-0">
+                                  <ion-item lines="none">
+                                    <div>
+                                      <h1 class="pop_head m-0 p-0">You Must</h1>
+                                      <p class="pop_body m-0 p-0">Received a Grade</p>
+                                    </div>
+                                  </ion-item>
+                                </ion-list>
+                              </ion-content>
+                            </ng-template>
+                          </ion-popover>
+                        </p>
+                      </ion-list>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+              <!-- <iframe [srcdoc]="storyHtmlData" frameborder="0" width="100%" height="500"></iframe> -->
+            </div>
+          </div>
+        </div>
+        <div *ngIf="showLite">
+          <div *ngFor="let item of courseData; let i = index">
+            <h1 class="body_title" *ngIf="i==3">{{item.name | replaceAmp}}</h1>
+            <div class="col-12" *ngIf="i==3">
+              <ion-card class="card" *ngFor="let val of item.modules; let j = index" >
+                <ion-card-content class="m-0 p-0" (click)="onClick(val)">
+                  <ion-list lines="none" class="m-0 p-0">
+                    <ion-item class="m-0 p-0">
+                      <ion-thumbnail slot="start" class="img-fluid rounded-start" >
+                        <img src={{val.modicon}} alt=""/>
+                      </ion-thumbnail>
+                      <ion-list class="col-12">
+                        <ion-label class="content_p">{{val.name | replaceAmp}}</ion-label>
+                        <p class="card_text">
+                          <ion-badge color="primary" (click)="presentPopover($event, i, j)" class="col-2 card_badge">To
+                            do&nbsp;<ion-icon name="caret-down-sharp"></ion-icon></ion-badge>
+                          <ion-popover #popover [isOpen]="isPopoverOpen(i, j)" (didDismiss)="isOpen = false">
+                            <ng-template>
+                              <ion-content>
+                                <ion-list class="p-0 m-0">
+                                  <ion-item lines="none">
+                                    <div>
+                                      <h1 class="pop_head m-0 p-0">You Must</h1>
+                                      <p class="pop_body m-0 p-0">Received a Grade</p>
+                                    </div>
+                                  </ion-item>
+                                </ion-list>
+                              </ion-content>
+                            </ng-template>
+                          </ion-popover>
+                        </p>
+                      </ion-list>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="showInfo">
+          <div *ngFor="let item of courseData; let i = index">
+            <h1 class="body_title" *ngIf="i==4">{{item.name | replaceAmp}}</h1>
+            <div class="col-12" *ngIf="i==4">
+              <ion-card class="card" *ngFor="let val of item.modules; let j = index" >
+                <ion-card-content class="m-0 p-0" (click)="onClick(val)">
+                  <ion-list lines="none" class="m-0 p-0">
+                    <ion-item class="m-0 p-0">
+                      <ion-thumbnail slot="start" class="img-fluid rounded-start">
+                        <img src={{val.modicon}}  alt=""/>
+                      </ion-thumbnail>
+                      <ion-list class="col-12">
+                        <ion-label class="content_p">{{val.name | replaceAmp}}</ion-label>
+                        <p class="card_text">
+                          <ion-badge color="primary" (click)="presentPopover($event, i, j)" class="col-2 card_badge">To
+                            do&nbsp;<ion-icon name="caret-down-sharp"></ion-icon></ion-badge>
+                          <ion-popover #popover [isOpen]="isPopoverOpen(i, j)" (didDismiss)="isOpen = false">
+                            <ng-template>
+                              <ion-content>
+                                <ion-list class="p-0 m-0">
+                                  <ion-item lines="none">
+                                    <div>
+                                      <h1 class="pop_head m-0 p-0">You Must</h1>
+                                      <p class="pop_body m-0 p-0">Received a Grade</p>
+                                    </div>
+                                  </ion-item>
+                                </ion-list>
+                              </ion-content>
+                            </ng-template>
+                          </ion-popover>
+                        </p>
+                      </ion-list>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="showInfo">
+        <div *ngFor="let item of courseData; let i = index">
+          <h1 class="body_title" *ngIf="i==5">{{item.name | replaceAmp}}</h1>
+          <div class="col-12" *ngIf="i==5">
+            <ion-card class="card" *ngFor="let val of item.modules; let j = index" >
+              <ion-card-content class="m-0 p-0" (click)="onClick(val)">
+                <ion-list lines="none" class="m-0 p-0">
+                  <ion-item class="m-0 p-0">
+                    <ion-thumbnail slot="start" class="img-fluid rounded-start">
+                      <img src={{val.modicon}}  alt=""/>
+                    </ion-thumbnail>
+                    <ion-list class="col-12">
+                      <ion-label class="content_p">{{val.name | replaceAmp}}</ion-label>
+                      <p class="card_text">
+                        <ion-badge color="primary" (click)="presentPopover($event, i, j)" class="col-2 card_badge">To
+                          do&nbsp;<ion-icon name="caret-down-sharp"></ion-icon></ion-badge>
+                        <ion-popover #popover [isOpen]="isPopoverOpen(i, j)" (didDismiss)="isOpen = false">
+                          <ng-template>
+                            <ion-content>
+                              <ion-list class="p-0 m-0">
+                                <ion-item lines="none">
+                                  <div>
+                                    <h1 class="pop_head m-0 p-0">You Must</h1>
+                                    <p class="pop_body m-0 p-0">Received a Grade</p>
+                                  </div>
+                                </ion-item>
+                              </ion-list>
+                            </ion-content>
+                          </ng-template>
+                        </ion-popover>
+                      </p>
+                    </ion-list>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>      
+      </div>
+
+
+      <div *ngIf="showInfo">
+        <div *ngFor="let item of courseData; let i = index">
+          <h1 class="body_title" *ngIf="i==6">{{item.name | replaceAmp}}</h1>
+          <div class="col-12" *ngIf="i==6">
+            <ion-card class="card" *ngFor="let val of item.modules; let j = index" >
+              <ion-card-content class="m-0 p-0" (click)="onClick(val)">
+                <ion-list lines="none" class="m-0 p-0">
+                  <ion-item class="m-0 p-0">
+                    <ion-thumbnail slot="start" class="img-fluid rounded-start">
+                      <img src={{val.modicon}}  alt=""/>
+                    </ion-thumbnail>
+                    <ion-list class="col-12">
+                      <ion-label class="content_p">{{val.name | replaceAmp}}</ion-label>
+                      <p class="card_text">
+                        <ion-badge color="primary" (click)="presentPopover($event, i, j)" class="col-2 card_badge">To
+                          do&nbsp;<ion-icon name="caret-down-sharp"></ion-icon></ion-badge>
+                        <ion-popover #popover [isOpen]="isPopoverOpen(i, j)" (didDismiss)="isOpen = false">
+                          <ng-template>
+                            <ion-content>
+                              <ion-list class="p-0 m-0">
+                                <ion-item lines="none">
+                                  <div>
+                                    <h1 class="pop_head m-0 p-0">You Must</h1>
+                                    <p class="pop_body m-0 p-0">Received a Grade</p>
+                                  </div>
+                                </ion-item>
+                              </ion-list>
+                            </ion-content>
+                          </ng-template>
+                        </ion-popover>
+                      </p>
+                    </ion-list>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>      
+      </div>
+
+
+      </div>
+      <div class="col-12" *ngIf="segment === 'grades'">
+        <div class="ion-padding">
+          <!-- <div class="card_search mb-3 p-1">
+            <ion-input class="grade_search" type="text" placeholder="Search"><ion-icon class="search_icon" slot="end"
+                color="medium" name="search-outline"></ion-icon></ion-input>
+          </div> -->
+          <div class="content text-center" *ngIf="gradesData.length === 0">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+              <ion-img src="assets/img/marking.png"></ion-img>
+            </div>
+            <ion-text>No Grades Return</ion-text>
+          </div>
+        </div>
+        <div class="col-12 grade_header p-3">
+          <ion-title class="grade_title">{{data.displayname}}</ion-title>
+        </div>
+        <div class="grade_main">
+          <div class="col-12" *ngFor="let val of gradesData; let i = index">
+            <ion-accordion-group *ngFor="let item of val.gradeitems; let j = index">
+              <ion-accordion class="acc_main_cyber" [value]="'cyber_' + i + '_' + j" toggleIcon="" *ngIf="item.itemname">
+                <ion-item lines="none" class="acc_header_cyber" slot="header" (click)="toggleAccordion(i, j)">
+                  <ion-icon slot="start" color="primary" class="p-0 m-0"
+                    [name]="isExpanded === 'cyber_' + i + '_' + j ? 'chevron-up' : 'chevron-forward'"
+                    [style.transform]="isExpanded === 'cyber_' + i + '_' + j ? 'rotate(180deg)' : 'rotate(0deg)'"></ion-icon>
+                  <ion-label class="col-10 acc_label">{{item.itemname}}</ion-label>
+                  <ion-label class="text-end acc_sub_label">-</ion-label>
+                </ion-item>
+                <div class="col-12 ion-padding" slot="content">
+                  <div class="row">
+                    <div class="col-6 text-center">
+                      <p class="row_head m-0">Grade</p>
+                    </div>
+                    <!-- <div class="col-6 text-center">
+                      <p class="row_head m-0">Grade</p>
+                    </div> -->
+                    <div class="col-6 text-center">
+                      <p class="row_head m-0">Percentage</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 text-center">
+                      <p class="row_val">{{item.graderaw}}</p>
+                    </div>
+                    <!-- <div class="col-6 text-center">
+                      <p class="row_val">{{item.gradeformatted}}</p>
+                    </div> -->
+                    <div class="col-6 text-center">
+                      <p class="row_val">{{item.percentageformatted}}</p>
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-6 text-center">
+                      <p class="row_head m-0">Range</p>
+                    </div>
+                    <div class="col-6 text-center">
+                      <p class="row_head m-0">Percentage</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 text-center">
+                      <p class="row_val">{{item.rangeformatted}}</p>
+                    </div>
+                    <div class="col-6 text-center">
+                      <p class="row_val">{{item.percentageformatted}}</p>
+                    </div>
+                  </div> -->
+                </div>
+              </ion-accordion>
+            </ion-accordion-group>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 p-3" *ngIf="segment === 'competencies'">
+        <div class="card_search p-2">
+          <p class="comp_p">
+            You are proficient in 0 out of 2 competencies in this course.
+          </p>
+          <div *ngFor="let progressBar of myCourses; let i = index">
+            <div class="col-12 bar_main">
+              <div class="progress_bar_container col-8">
+                <div class="progress_bar" [style.width]="progressBar.value * 100 + '%'"></div>
+              </div>
+              <div class="percentage_display col-2">
+                {{ progressBar.value * 100 }}%
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <h2 class="content_h2">Course Competencies</h2>
+          <div class="card p-2 mb-2">
+            <div class="d-flex align-items-start justify-content-between">
+              <p class="comm">CommunicationSC001</p>
+              <div class="d-flex">
+                <ion-img src="assets/img/chip.png"></ion-img>
+                <p>1</p>
+                <ion-icon (click)="onComm()" style="font-size: 25px" color="primary"
+                  name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </div>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-label class="label_left">Path :</ion-label>
+                <ion-label class="label_ryt">Sales /</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label class="label_left">Activities :</ion-label>
+                <ion-label class="label_ryt">No Activities</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label class="label_left">Learning Plans :</ion-label>
+                <ion-label class="label_ryt">No Learning plan in this competency</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+          <div class="card p-2">
+            <div class="d-flex align-items-start justify-content-between">
+              <p class="comm">Body LanguageSB001</p>
+              <div class="d-flex">
+                <ion-img src="assets/img/chip.png"></ion-img>
+                <p>1</p>
+                <ion-icon (click)="onComm()" style="font-size: 25px" color="primary"
+                  name="chevron-forward-sharp"></ion-icon>
+              </div>
+            </div>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-label class="label_left">Path :</ion-label>
+                <ion-label class="label_ryt">Sales /</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label class="label_left">Activities :</ion-label>
+                <ion-label class="label_ryt">No Activities</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label class="label_left">Learning Plans :</ion-label>
+                <ion-label class="label_ryt">No Learning plan in this competency</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</ion-content>
+<!-- <ion-footer [translucent]="true"> -->
+  <!-- <ion-toolbar class="p-1">
+    <div class="col-12 body_sub" *ngIf="segment === 'course'">
+      <div>
+        <div class="row" *ngIf="showMain">
+          <ion-button expand="block" class="btn_pwd" color="primary" (click)="onPwdSec()">Next1&nbsp;<ion-img src="assets/icon/ryt_arrow.svg" alt=""></ion-img></ion-button>
+        </div>
+        <div class="row" *ngIf="showPwdSec">
+          <div class="col-6">
+            <ion-button (click)="onCybSec()" expand="block" class="btn_btm" color="primary"><ion-img
+                src="assets/icon/lft_arrow.svg" alt=""></ion-img>&nbsp;Previous1</ion-button>
+          </div>
+          <div class="col-6">
+            <ion-button (click)="onDesktop()" expand="block" class="btn_btm" color="primary">Next2&nbsp;<ion-img src="assets/icon/ryt_arrow.svg" alt=""></ion-img></ion-button>
+          </div>
+        </div>
+        <div class="row" *ngIf="showDesktop">
+          <div class="col-6">
+            <ion-button (click)="onPwdSec()" expand="block" class="btn_btm" color="primary"><ion-img
+                src="assets/icon/lft_arrow.svg" alt=""></ion-img>&nbsp;Previous2</ion-button>
+          </div>
+          <div class="col-6">
+            <ion-button (click)="onDesktopLite()" expand="block" class="btn_btm" color="primary">Next3&nbsp;<ion-img src="assets/icon/ryt_arrow.svg" alt=""></ion-img></ion-button>
+          </div>
+        </div>
+        <div class="row" *ngIf="showLite">
+          <div class="col-6">
+            <ion-button (click)="onDesktop()" expand="block" class="btn_btm" color="primary"><ion-img
+                src="assets/icon/lft_arrow.svg" alt=""></ion-img>&nbsp;Previous3</ion-button>
+          </div>
+          <div class="col-6">
+            <ion-button (click)="onInfo()" expand="block" class="btn_btm" color="primary">Next4&nbsp;<ion-img src="assets/icon/ryt_arrow.svg" alt=""></ion-img></ion-button>
+          </div>
+        </div>
+        <div class="row" *ngIf="showInfo">
+          <ion-button (click)="onDesktopLite()" expand="block" class="btn_pwd" color="primary"><ion-img
+              src="assets/icon/lft_arrow.svg" alt=""></ion-img>&nbsp;Previous4</ion-button>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar> -->
+<!-- </ion-footers> -->

@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="title">Course Downloads</ion-title>
+    <ion-back-button color="primary" slot="start" defaultHref=""></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="content">
+    <p class="content_title">
+      Download course content to work offline. Your activity will sync
+      automatically when your device is back online.
+    </p>
+    <div class="card mb-3">
+      <div class="col-12">
+        <div class="header">
+          <h1 class="heading">Cyber Security Awareness</h1>
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <p class="sub_head">Total downloads</p>
+            <ion-badge class="span_badge" color="primary">0 Bytes</ion-badge>
+          </div>
+          <div class="col-12 btn-group d-block mb-1">
+            <ion-button class="dwn_btn" color="success"
+              ><ion-img src="assets/icon/download-white.svg"></ion-img
+              ><span class="dwn_span">&nbsp;Download Course</span></ion-button
+            >
+            <ion-button class="dust_btn" color="danger"
+              ><ion-img src="assets/icon/dustbin.svg"></ion-img
+              ><span class="del_span">&nbsp;Delete All</span></ion-button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="col-12">
+        <ion-accordion-group>
+          <ion-accordion
+            class="acc_main"
+            value="first"
+            toggleIcon="chevron-down"
+            toggleIconSlot="start"
+          >
+            <ion-item class="acc_header" slot="header">
+              <ion-label class="acc_label">Password Security</ion-label>
+              <ion-img src="assets/icon/download.svg"></ion-img>
+            </ion-item>
+            <div class="ion-padding col-12 d-flex align-items-start" slot="content">
+              <ion-img src="assets/img/document.png" alt=""></ion-img>
+              
+              <div class="col-10 d-flex align-items-center justify-content-between">
+                <p class="content_p">Click here for <strong>Password Security</strong> Content</p>
+              <ion-img src="assets/icon/download.svg" alt=""></ion-img>
+              </div>
+            </div>
+            <div class="ion-padding col-12 d-flex align-items-start" slot="content">
+              <ion-img src="assets/img/lock_bg.png" alt=""></ion-img>
+              <div class="col-10 d-flex align-items-center justify-content-between">
+              <p class="content_p">Quiz on <strong>Password Security</strong></p>
+              <ion-img src="assets/icon/download.svg" alt=""></ion-img>
+            </div>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- <app-footer></app-footer> -->

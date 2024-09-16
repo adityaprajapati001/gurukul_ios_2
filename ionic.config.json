@@ -1,0 +1,16 @@
+{
+  "name": "Gurukul",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "proxy": {
+    "/api": {
+      "target": "https://gurukul.skfin.in",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  },
+  "id": "3b56667d"
+}
